@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Děkujeme – Prague Psychotherapy</title>
+  <meta name="description" content="Děkujeme za odeslání formuláře. Ozveme se vám co nejdříve.">
+
+  <!-- Google font Figtree -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Hlavní CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HLAVIČKA (stejná jako na homepage) -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText.jpg" 
+             alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#onas">O nás</a>
+        <a href="index.html#sluzby">Co nabízíme</a>
+        <a href="index.html#kde-cena">Ceník</a>
+        <a href="index.html#terapeuti">Naši terapeuté</a>
+        <a href="index.html#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- OBSAH -->
+  <main id="main">
+    <section class="section">
+      <div class="container" style="text-align:center; max-width:640px;">
+        <h1 class="section-title">Děkujeme za vaši zprávu</h1>
+        <p class="section-sub">Formulář byl úspěšně odeslán. Ozveme se vám zpravidla do 24 hodin.</p>
+        <div style="margin-top:1rem;">
+          <a class="btn" href="index.html">Zpět na hlavní stránku</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- volitelně: rychlé odkazy, pokud chceš -->
+    <!--
+    <section class="section">
+      <div class="container">
+        <div class="quick-links">
+          <a href="index.html" class="btn-light">Homepage</a>
+          <a href="index.html#objednat" class="btn-light">Chci se objednat</a>
+          <a href="blog.html" class="btn-light">Blog</a>
+        </div>
+      </div>
+    </section>
+    -->
+  </main>
+
+  <!-- PATIČKA (stejná jako na homepage) -->
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© 2025 Prague Psychotherapy • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="index.html#objednat">Objednat</a></div>
+      <div><a href="#">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
+
+  <!-- (Volitelné) hamburger skript, pokud ho na webu používáš -->
+  <!--
+  <script>
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav-toggle');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('is-open');
+        nav.classList.toggle('is-open');
+      });
+    }
+  </script>
+  -->
+</body>
+</html>
