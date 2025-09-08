@@ -303,11 +303,11 @@
   }
   @media (prefers-color-scheme: dark) {
   h3 {
-    color: #f3f4f6; /* nadpisy h3 – skoro bílá */
+    color: #000000; /* nadpisy h3 – skoro bílá */
   }
 
   p, li {
-    color: #e5e7eb; /* běžný text a odrážky – světle šedá */
+    color: #000000; /* běžný text a odrážky – světle šedá */
   }
 }
 
