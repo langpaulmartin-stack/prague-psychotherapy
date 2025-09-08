@@ -285,6 +285,12 @@
   @media (max-width: 560px){
     .site-footer .cols { grid-template-columns: 1fr; }
   }
+@media (max-width: 640px) {
+  .fade-slider .slider-overlay p {
+    display: none;
+  }
+}
+
   
   /* Dark mode (OS preference) */
   @media (prefers-color-scheme: dark) {
