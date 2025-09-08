@@ -301,7 +301,16 @@
       border-color: color-mix(in srgb, var(--brand-dark) 30%, var(--border));
     }
   }
-  
+  @media (prefers-color-scheme: dark) {
+  h3 {
+    color: #f3f4f6; /* nadpisy h3 – skoro bílá */
+  }
+
+  p, li {
+    color: #e5e7eb; /* běžný text a odrážky – světle šedá */
+  }
+}
+
   /* Print */
   @media print {
     .site-header, .hero, .nav, .btn { display: none !important }
