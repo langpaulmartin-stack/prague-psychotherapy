@@ -290,6 +290,27 @@
       <div><a href="#">Zásady ochrany osobních údajů</a></div>
     </div>
   </footer>
-
+<script>
+    (function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav');
+      if (!toggle || !nav) return;
+  
+      toggle.addEventListener('click', () => {
+        const open = toggle.classList.toggle('is-open');
+        nav.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+  
+      // Volitelně: zavřít po kliknutí na odkaz
+      nav.addEventListener('click', e => {
+        if (e.target.matches('a')) {
+          nav.classList.remove('is-open');
+          toggle.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
