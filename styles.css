@@ -311,6 +311,19 @@
   h3 {
     color: var(--brand-dark); /* tmavě zelená */
   }
+    @media (prefers-color-scheme: dark) {
+  /* tmavší text v kartách */
+  .card p,
+  .card li {
+    color: #e2e8f0; /* hodně tmavá šedá, čitelnější */
+  }
+
+  /* cena v tmavě zelené */
+  .pricing .price {
+    color: var(--brand-dark);
+  }
+}
+
 
   .card p,
   .card li,
