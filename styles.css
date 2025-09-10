@@ -457,6 +457,16 @@
     background:var(--text);
     transition:transform .2s ease, opacity .2s ease;
   }
+.nav-toggle-bar {
+  display: block;
+  width: 26px;
+  height: 3px;          /* trošku vyšší, ať je vidět */
+  margin: 5px 0;        /* mezera mezi čárami */
+  background: var(--text);
+  border-radius: 2px;   /* mírně zaoblené rohy */
+  transition: transform .2s ease, opacity .2s ease;
+}
+
   
   /* Výchozí nav (desktop) už máš: .nav {display:flex...} */
   
