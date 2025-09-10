@@ -328,7 +328,7 @@
   .card p,
   .card li,
   .section-sub {
-    color: #d1d5db; /* tmavší šedá, dobře čitelná */
+    color: #000000; /* tmavší šedá, dobře čitelná */
   }
 }
 
