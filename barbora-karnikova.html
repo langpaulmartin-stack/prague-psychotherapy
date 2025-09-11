@@ -169,6 +169,58 @@ V současnosti působím na částečný úvazek jako koordinátorka sociálníc
     <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
   </div>
 </footer>
-
+ <script>
+    (function() {
+      const counters = document.querySelectorAll(".stat-number[data-target]");
+      if (!("IntersectionObserver" in window) || counters.length === 0) {
+        // Fallback: bez observeru rovnou dopočítej
+        counters.forEach(c => c.textContent = c.getAttribute("data-target"));
+        return;
+      }
+  
+      const animateCounter = (el) => {
+        const target = Number(el.getAttribute("data-target"));
+        const duration = 2000; // ms (celkový čas animace)
+        const startTime = performance.now();
+        const startVal = 0;
+  
+        const step = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          // easeOutCubic pro příjemnější dojezd
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const val = Math.round(startVal + (target - startVal) * eased);
+          el.textContent = val.toLocaleString("cs-CZ");
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target.toLocaleString("cs-CZ");
+            el.dataset.animated = "true";
+          }
+        };
+        requestAnimationFrame(step);
+      };
+  
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target.querySelector(".stat-number[data-target]") || entry.target;
+            // pokud sledujeme číslo přímo:
+            const targetEl = el.classList && el.classList.contains("stat-number") ? el : null;
+  
+            if (targetEl && targetEl.dataset.animated !== "true") {
+              animateCounter(targetEl);
+            }
+            io.unobserve(entry.target); // spustit jen jednou
+          }
+        });
+      }, { threshold: 0.3 });
+  
+      // Sleduj každý box, který obsahuje počítané číslo
+      document.querySelectorAll(".stat-card").forEach(card => {
+        const hasCounter = card.querySelector(".stat-number[data-target]");
+        if (hasCounter) io.observe(card);
+      });
+    })();
+  </script>
 </body>
 </html>
