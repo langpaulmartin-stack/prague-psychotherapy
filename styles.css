@@ -519,6 +519,20 @@
   padding: 1.2rem;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
+  /* FORMULÁŘ – text uvnitř inputů, selectů, textarea */
+  .input,
+  .select,
+  .textarea {
+    color: #000000; /* černá */
+    background: #fff; /* bílé pozadí pro kontrast */
+  }
+
+  .input::placeholder,
+  .textarea::placeholder {
+    color: #555; /* trochu tmavší placeholder, ať je čitelný */
+  }
+}
+
 
 /* Hover efekt – lehký stín a malý "lift" */
 .card:hover {
