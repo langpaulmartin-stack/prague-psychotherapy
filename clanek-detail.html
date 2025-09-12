@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Název článku | Blog | Prague Psychotherapy</title>
+  <meta name="description" content="Detail článku na blogu Prague Psychotherapy.">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HLAVIČKA -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp" 
+             alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#onas">O nás</a>
+        <a href="index.html#sluzby">Co nabízíme</a>
+        <a href="index.html#kde-cena">Ceník</a>
+        <a href="index.html#terapeuti">Naši terapeuté</a>
+        <a href="index.html#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO OBRÁZEK ČLÁNKU -->
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <img src="https://picsum.photos/1200/630?random=101" alt="Obrázek článku"
+             style="width:100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+      </div>
+    </section>
+
+    <!-- OBSAH ČLÁNKU -->
+    <section class="section" style="padding-top:24px;">
+      <div class="container" style="max-width: 860px;">
+        <p class="section-sub" style="margin-bottom:.5rem;">Publikováno: <time datetime="2025-01-12">12.&nbsp;1.&nbsp;2025</time></p>
+        <h1 class="section-title" style="margin-bottom: .75rem;">Název článku – placeholder</h1>
+        <p class="section-sub" style="margin-bottom: 1.5rem;">Krátký perex článku, 1–2 věty, které shrnou obsah. Slouží jako úvod a nalákání ke čtení.</p>
+
+        <article class="prose">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac sapien at lorem eleifend fermentum. 
+             Suspendisse potenti. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+             Proin hendrerit, nulla at consequat cursus, libero nibh aliquet dui, non tincidunt magna magna id arcu.</p>
+
+          <h3>Podnadpis sekce</h3>
+          <p>Phasellus eu nunc vitae urna fermentum viverra. Vivamus sed turpis at nunc gravida tincidunt. 
+             Morbi lacinia magna sed eros congue, sed vehicula libero finibus. Integer posuere efficitur nibh, 
+             vitae bibendum velit malesuada nec.</p>
+
+          <ul>
+            <li>Bod k zamyšlení – krátká myšlenka k tématu.</li>
+            <li>Další bod – praktický tip pro čtenáře.</li>
+            <li>Třetí bod – doporučení nebo doporučená praxe.</li>
+          </ul>
+
+          <h3>Další sekce</h3>
+          <p>Aliquam luctus magna sed tortor consectetur, in interdum felis tristique. Vivamus nec dui nec elit 
+             facilisis tincidunt nec et felis. Sed bibendum ante id risus ultrices, a viverra nisl gravida.</p>
+
+          <p>Závěrečný odstavec, který shrne hlavní sdělení článku a případně nabídne výzvu k akci (CTA), 
+             např. možnost objednat se na konzultaci.</p>
+        </article>
+
+        <!-- NAVIGACE DOLE -->
+        <div class="quick-links" style="margin-top: 24px;">
+          <a href="blog.html" class="btn-light">← Zpět na blog</a>
+          <a href="index.html" class="btn-light">Domů</a>
+          <a href="index.html#objednat" class="btn">Chci se objednat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PATIČKA -->
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© <span id="year"></span> Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="index.html#objednat">Objednat</a></div>
+      <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Rok v patičce
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // (volitelné) zvýraznění aktivní položky v menu
+    const path = location.pathname.split('/').pop();
+    const active = document.querySelector('.nav a[href="' + path + '"]');
+    if (active) active.classList.add('is-active');
+  </script>
+</body>
+</html>
