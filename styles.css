@@ -188,6 +188,11 @@
   }
   .card h3 { margin: .2rem 0 .5rem; font-size: 1.12rem }
   .card p { margin: 0; color: var(--muted) }
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
   
   /* About */
   .about .list { display: grid; gap: 8px; padding-left: 1rem; margin: 1rem 0 0 }
@@ -292,44 +297,34 @@
 }
 
   
-  /* Dark mode (OS preference) */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0b1220; --surface: #0f172a; --surface-2: #111827;
-      --text: #e5e7eb; --muted: #94a3b8; --border: #1f2937;
-    }
-    .site-header { background: rgba(11,18,32,.7); border-color: var(--border) }
-    .nav a:hover { background: #101826 }
-    .card, .post, .site-footer { background: var(--surface) }
-    .btn-ghost { background: transparent; color: var(--text); border-color: #253049 }
-    .surface {
-      background: color-mix(in srgb, var(--brand-dark) 10%, var(--surface));
-      border-color: color-mix(in srgb, var(--brand-dark) 30%, var(--border));
-    }
-  }
+/* Dark mode (OS preference) */
 @media (prefers-color-scheme: dark) {
-  h3 {
-    color: var(--brand-dark); /* tmavě zelená */
-  }
-    @media (prefers-color-scheme: dark) {
-  /* tmavší text v kartách */
-  .card p,
-  .card li {
-    color: #e2e8f0; /* hodně tmavá šedá, čitelnější */
+  :root {
+    --bg: #0b1220;
+    --surface: #0f172a;
+    --surface-2: #111827;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --border: #1f2937;
   }
 
-  /* cena v tmavě zelené */
-  .pricing .price {
-    color: var(--brand-dark);
+  .site-header { background: rgba(11,18,32,.7); border-color: var(--border) }
+  .nav a:hover { background: #101826 }
+  .card, .post, .site-footer { background: var(--surface) }
+  .btn-ghost { background: transparent; color: var(--text); border-color: #253049 }
+  .surface {
+    background: color-mix(in srgb, var(--brand-dark) 10%, var(--surface));
+    border-color: color-mix(in srgb, var(--brand-dark) 30%, var(--border));
   }
-}
 
-
+  /* ztmavení textů v dark režimu */
+  h3 { color: var(--brand-dark); }
   .card p,
   .card li,
-  .section-sub {
-    color: #000000; /* tmavší šedá, dobře čitelná */
-  }
+  .section-sub { color: #e2e8f0; }
+
+  /* cena v tmavě zelené */
+  .pricing .price { color: var(--brand-dark); }
 }
 
 
@@ -547,7 +542,7 @@
 }
 .map-embed {
   margin-top: 16px;
-  border-radius: 0(--radius);
+  border-radius: 0;         /* nebo var(--radius), podle chuti */
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
