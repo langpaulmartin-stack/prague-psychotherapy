@@ -297,60 +297,57 @@
 }
 
   
-  /* Dark mode (OS preference) */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0b1220; --surface: #0f172a; --surface-2: #111827;
-      --text: #e5e7eb; --muted: #94a3b8; --border: #1f2937;
-    }
-    .site-header { background: rgba(11,18,32,.7); border-color: var(--border) }
-    .nav a:hover { background: #101826 }
-    .card, .post, .site-footer { background: var(--surface) }
-    .btn-ghost { background: transparent; color: var(--text); border-color: #253049 }
-    .surface {
-      background: color-mix(in srgb, var(--brand-dark) 10%, var(--surface));
-      border-color: color-mix(in srgb, var(--brand-dark) 30%, var(--border));
-    }
-  }
+/* Dark mode (OS preference) — JEDINÝ sjednocený blok */
 @media (prefers-color-scheme: dark) {
-  h3 {
-    color: var(--brand-dark); /* tmavě zelená */
-  }
-    @media (prefers-color-scheme: dark) {
-  /* tmavší text v kartách */
-  .card p,
-  .card li {
-    color: #e2e8f0; /* hodně tmavá šedá, čitelnější */
+  :root {
+    --bg: #0b1220;
+    --surface: #0f172a;
+    --surface-2: #111827;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --border: #1f2937;
   }
 
-  /* cena v tmavě zelené */
-  .pricing .price {
-    color: var(--brand-dark);
+  body { background: var(--bg); color: var(--text); }
+
+  .site-header { background: rgba(11,18,32,.7); border-color: var(--border); }
+  .nav a:hover { background: #101826; }
+  .card, .post, .site-footer { background: var(--surface); }
+  .surface {
+    background: color-mix(in srgb, var(--brand-dark) 10%, var(--surface));
+    border-color: color-mix(in srgb, var(--brand-dark) 30%, var(--border));
   }
-}
+
+  /* Nadpisy v dark modu */
+  h3 { color: var(--brand-dark); }
+
+  /* Text v kartách – o chlup „světlejší“, ale ne vyblitý */
   .card p,
   .card li,
-  .section-sub {
-    color: #000000; /* tmavší šedá, dobře čitelná */
+  .section-sub { color: #e2e8f0; }
+
+  /* Ceny v ceníku – tmavě zelená brand */
+  .pricing .price { color: var(--brand-dark); }
+
+  /* >>> FORMULÁŘ v sekci #objednat – černý text na bílém podkladu <<< */
+  #objednat .label { color: #111; } /* ať je popisek kontrastní */
+  #objednat .input,
+  #objednat .select,
+  #objednat .textarea {
+    color: #000;                 /* černý text uvnitř polí */
+    background: #fff;            /* bílé pozadí polí */
+    border: 1px solid #d1d5db;   /* světlejší okraj pro lepší čitelnost */
+  }
+  #objednat .input::placeholder,
+  #objednat .textarea::placeholder { color: #555; }
+  #objednat .input:focus,
+  #objednat .select:focus,
+  #objednat .textarea:focus {
+    border-color: var(--brand-dark);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-light) 35%, transparent);
+    outline: none;
   }
 }
-@media (prefers-color-scheme: dark) {
-  /* formulář – text uvnitř polí */
-  .input,
-  .select,
-  .textarea {
-    color: #000;          /* černý text */
-    background: #fff;     /* bílé pozadí */
-    border: 1px solid var(--border);
-  }
-
-  /* placeholder text – lehce šedý */
-  .input::placeholder,
-  .textarea::placeholder {
-    color: #555;
-  }
-}
-
 
 
   /* Print */
