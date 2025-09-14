@@ -1,13 +1,167 @@
 <!DOCTYPE html>
 <html lang="cs">
-  <!-- Google tag (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1R1G4TVZ3"></script>
+<!-- ===== Cookie lišta + Google Consent Mode v2 (CZ) – Prague Psychotherapy ===== -->
+<style>
+  .pp-cookie-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);backdrop-filter:saturate(130%) blur(2px);display:none;z-index:9998}
+  .pp-cookie-banner{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);width:min(720px,92%);background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,.18);padding:16px 16px 12px;z-index:9999;display:none;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#0f172a}
+  .pp-cookie-title{font-size:18px;margin:0 0 6px;font-weight:700}
+  .pp-cookie-text{font-size:14px;line-height:1.45;margin:0 0 10px;color:#334155}
+  .pp-cookie-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:10px}
+  .pp-btn{appearance:none;border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer}
+  .pp-btn:hover{background:#f8fafc}
+  .pp-btn-primary{background:#A4AE8F;border-color:#9aa882;color:#0f172a;font-weight:600}
+  .pp-btn-primary:hover{filter:brightness(0.98)}
+  .pp-btn-danger{background:#fff;border-color:#e2e8f0}
+  details.pp-advanced{margin-top:6px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:8px}
+  details.pp-advanced summary{cursor:pointer;list-style:none}
+  details.pp-advanced summary::-webkit-details-marker{display:none}
+  .pp-switch{display:flex;align-items:center;gap:8px;margin:6px 0}
+  .pp-switch input{width:18px;height:18px}
+  .pp-small{font-size:12px;color:#64748b;margin-top:4px}
+  @media (prefers-reduced-motion:no-preference){
+    .pp-cookie-banner{animation:pp-slide .25s ease-out}
+    @keyframes pp-slide{from{transform:translate(-50%,8px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+  }
+</style>
+
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
+/* ---------- 1) Inicializace Consent Mode: default = denied ---------- */
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+
+/* Defaultní režim – nic neukládat, dokud neudělím souhlas */
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'functionality_storage': 'granted',   // nezbytné (např. jazyk, UI)
+  'security_storage': 'granted'
+});
+
+/* Pomůcky */
+const PP_KEY = 'pp_consent_v2';
+const hasStoredConsent = () => !!localStorage.getItem(PP_KEY);
+const saveConsent = (obj) => localStorage.setItem(PP_KEY, JSON.stringify(obj));
+const readConsent = () => { try { return JSON.parse(localStorage.getItem(PP_KEY) || '{}'); } catch(e){ return {}; } };
+
+/* Načtení GA až po souhlasu (nebo když už byl dán dříve) */
+function loadGA(measurementId){
+  if (document.getElementById('pp-gtag-loader')) return; // už načteno
+  var s = document.createElement('script');
+  s.async = true;
+  s.id = 'pp-gtag-loader';
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+  document.head.appendChild(s);
   gtag('js', new Date());
-  gtag('config', 'G-Q1R1G4TVZ3');
+  gtag('config', measurementId); // základní page_view
+}
+
+/* Po načtení stránky: pokud je uložen souhlas, aplikuj ho a případně načti GA */
+document.addEventListener('DOMContentLoaded', function(){
+  const stored = readConsent();
+  if (stored && typeof stored === 'object' && Object.keys(stored).length){
+    gtag('consent', 'update', stored);
+    if (stored.analytics_storage === 'granted') {
+      loadGA('G-Q1R1G4TVZ3');
+    }
+  } else {
+    // Zobraz banner
+    document.querySelector('.pp-cookie-backdrop').style.display = 'block';
+    document.querySelector('.pp-cookie-banner').style.display = 'block';
+    // Přístupnost: fokus na první tlačítko
+    setTimeout(()=>document.getElementById('pp-accept-all')?.focus(), 0);
+  }
+});
+
+/* Obsluha tlačítek */
+function hideBanner(){
+  document.querySelector('.pp-cookie-backdrop').style.display = 'none';
+  document.querySelector('.pp-cookie-banner').style.display = 'none';
+}
+
+function acceptAll(){
+  const consent = {
+    ad_storage: 'denied',              // pokud nepoužíváš reklamy, necháme denied
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    security_storage: 'granted'
+  };
+  gtag('consent', 'update', consent);
+  saveConsent(consent);
+  loadGA('G-Q1R1G4TVZ3');
+  hideBanner();
+}
+
+function rejectAll(){
+  const consent = {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted'
+  };
+  gtag('consent', 'update', consent);
+  saveConsent(consent);
+  hideBanner();
+}
+
+function saveCustom(){
+  const analytics = document.getElementById('pp-ck-analytics').checked ? 'granted' : 'denied';
+  const consent = {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: analytics,
+    functionality_storage: 'granted',
+    security_storage: 'granted'
+  };
+  gtag('consent', 'update', consent);
+  saveConsent(consent);
+  if (analytics === 'granted') { loadGA('G-Q1R1G4TVZ3'); }
+  hideBanner();
+}
+
+/* Exponování pro inline onclick */
+window.ppAcceptAll = acceptAll;
+window.ppRejectAll = rejectAll;
+window.ppSaveCustom = saveCustom;
 </script>
+
+<div class="pp-cookie-backdrop" aria-hidden="true"></div>
+<div class="pp-cookie-banner" role="dialog" aria-modal="true" aria-labelledby="pp-cookie-title">
+  <h2 id="pp-cookie-title" class="pp-cookie-title">Cookies & soukromí</h2>
+  <p class="pp-cookie-text">
+    Používáme nezbytné cookies pro správné fungování webu a volitelné analytické cookies (GA4),
+    které nám pomáhají zlepšovat obsah. Analytické spouštíme jen s tvým souhlasem.
+    <span class="pp-small">Správcem je EduVentures, s.r.o. Můžeš kdykoli změnit volbu smazáním „pp_consent_v2“ v prohlížeči.</span>
+  </p>
+
+  <details class="pp-advanced">
+    <summary><strong>Vlastní nastavení</strong></summary>
+    <label class="pp-switch" for="pp-ck-necessary">
+      <input id="pp-ck-necessary" type="checkbox" checked disabled>
+      <span>Nezbytné (nutné pro chod webu)</span>
+    </label>
+    <label class="pp-switch" for="pp-ck-analytics">
+      <input id="pp-ck-analytics" type="checkbox">
+      <span>Analytické (Google Analytics 4)</span>
+    </label>
+    <p class="pp-small">Reklamní cookies nepoužíváme.</p>
+  </details>
+
+  <div class="pp-cookie-actions">
+    <button class="pp-btn pp-btn-danger" type="button" onclick="ppRejectAll()">Odmítnout</button>
+    <button class="pp-btn" type="button" onclick="document.querySelector('details.pp-advanced').open = true">Upravit</button>
+    <button id="pp-accept-all" class="pp-btn pp-btn-primary" type="button" onclick="ppAcceptAll()">Povolit vše potřebné</button>
+    <button class="pp-btn" type="button" onclick="ppSaveCustom()">Uložit nastavení</button>
+  </div>
+</div>
+<!-- ===== /Cookie lišta + Consent Mode v2 ===== -->
+
 
 <head>
   <meta charset="UTF-8" />
