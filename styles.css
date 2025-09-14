@@ -328,14 +328,29 @@
     color: var(--brand-dark);
   }
 }
-
-
   .card p,
   .card li,
   .section-sub {
     color: #000000; /* tmavší šedá, dobře čitelná */
   }
 }
+@media (prefers-color-scheme: dark) {
+  /* formulář – text uvnitř polí */
+  .input,
+  .select,
+  .textarea {
+    color: #000;          /* černý text */
+    background: #fff;     /* bílé pozadí */
+    border: 1px solid var(--border);
+  }
+
+  /* placeholder text – lehce šedý */
+  .input::placeholder,
+  .textarea::placeholder {
+    color: #555;
+  }
+}
+
 
 
   /* Print */
