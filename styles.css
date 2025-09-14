@@ -364,6 +364,13 @@
     color: #555 !important;          /* tmavší šedý placeholder */
   }
 }
+/* === FIX: podnadpisy (section-sub) v dark modu === */
+@media (prefers-color-scheme: dark) {
+  .section-sub {
+    color: #ffffff !important; /* čistě bílý text */
+  }
+}
+
 
 /* === Fade slider: true cross-fade, bez bílého bliknutí === */
 .fade-slider {
