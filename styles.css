@@ -352,7 +352,7 @@
   }
 
   #objednat label {
-    color: #000 !important;          /* černý text labelů */
+    color: #ffffff !important;          /* černý text labelů */
   }
 
   #objednat input::placeholder,
@@ -370,7 +370,7 @@
 
   #objednat textarea {
 
-    color: #000 !important;          /* černý text */
+    color: #ffffff !important;          /* černý text */
 
     background-color: #fff !important; /* bílé pozadí */
 
@@ -378,7 +378,7 @@
 
   }
   #objednat label {
-    color: #000 !important;          /* černý text labelů */
+    color: #ffffff !important;          /* černý text labelů */
   }
   #objednat input::placeholder,
   #objednat textarea::placeholder {
