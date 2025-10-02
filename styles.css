@@ -334,6 +334,31 @@
     color: #555 !important;          /* tmavší šedý placeholder */
   }
 }
+/* === FIX: formulář v dark modu, text vždy černý === */
+
+@media (prefers-color-scheme: dark) {
+
+  #objednat input,
+
+  #objednat select,
+
+  #objednat textarea {
+
+    color: #000 !important;          /* černý text */
+
+    background-color: #fff !important; /* bílé pozadí */
+
+    border: 1px solid #d1d5db !important;
+
+  }
+  #objednat label {
+    color: #000 !important;          /* černý text labelů */
+  }
+  #objednat input::placeholder,
+  #objednat textarea::placeholder {
+    color: #555 !important;          /* tmavší šedý placeholder */
+  }
+}
 /* === FIX: podnadpisy (section-sub) v dark modu === */
 @media (prefers-color-scheme: dark) {
   .section-sub {
