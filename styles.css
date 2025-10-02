@@ -323,6 +323,12 @@
     color: #000000; /* tmavší šedá, dobře čitelná */
   }
 }
+/* Dark mode: label bílá */
+@media (prefers-color-scheme: dark) {
+  .label {
+    color: #ffffff !important;
+  }
+}
   /* Print */
   @media print {
     .site-header, .hero, .nav, .btn { display: none !important }
