@@ -302,7 +302,27 @@
       border-color: color-mix(in srgb, var(--brand-dark) 30%, var(--border));
     }
   }
-  
+@media (prefers-color-scheme: dark) {
+  h3 {
+    color: var(--brand-dark); /* tmavě zelená */
+  }
+    @media (prefers-color-scheme: dark) {
+  /* tmavší text v kartách */
+  .card p,
+  .card li {
+    color: #e2e8f0; /* hodně tmavá šedá, čitelnější */
+  }
+  /* cena v tmavě zelené */
+  .pricing .price {
+    color: var(--brand-dark);
+  }
+}
+  .card p,
+  .card li,
+  .section-sub {
+    color: #000000; /* tmavší šedá, dobře čitelná */
+  }
+}
   /* Print */
   @media print {
     .site-header, .hero, .nav, .btn { display: none !important }
