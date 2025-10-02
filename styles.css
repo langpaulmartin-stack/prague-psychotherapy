@@ -500,6 +500,13 @@
 @media (prefers-reduced-motion: reduce){
   .fade-slider .slides img { animation: none; opacity: 1; }
 }
+/* Mobil: schovej podnadpis v hero slideru */
+@media (max-width: 640px) {
+  .fade-slider .slider-overlay p {
+    display: none !important;
+  }
+}
+
 
 /* ====== Mobile hamburger ====== */
 .nav-toggle{
