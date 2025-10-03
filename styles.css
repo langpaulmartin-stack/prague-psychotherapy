@@ -1,4 +1,337 @@
 /* Prague Psychotherapy – styles.css (Figtree + sage paleta) */
+
+/* ---------- Tokens ---------- */
+:root{
+  --bg:#ffffff;
+  --surface:#f6f7f8;
+  --surface-2:#eef1f3;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:#e2e8f0;
+
+  /* Brand */
+  --brand:#A4AE8F;
+  --brand-light:#C5D8B1;
+  --brand-dark:#8E9F73;
+
+  --radius:14px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 6px 18px rgba(2,6,23,.10);
+
+  --font-sans:'Figtree',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --maxw:1120px;
+}
+
+/* ---------- Base ---------- */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font:16px/1.6 var(--font-sans);
+  color:var(--text);
+  background:var(--bg);
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--brand-dark);outline-offset:2px}
+
+/* ---------- Layout helpers ---------- */
+.container{max-width:var(--maxw);margin:0 auto;padding:0 1rem}
+.section{padding:64px 0}
+.section-title{font-size:2rem;margin:0 0 .5rem;color:var(--brand-dark)}
+.section-sub{color:var(--muted);margin:0 0 1.5rem}
+[id]{scroll-margin-top:84px}
+
+/* ---------- Header / Nav ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.navbar{display:flex;justify-content:space-between;align-items:center;height:64px;position:relative}
+.brand{
+  display:flex;align-items:center;gap:.5rem;
+  font-weight:600;color:var(--brand-dark);
+  text-decoration:none;transition:color .25s ease;
+}
+.brand:hover{color:var(--brand);text-decoration:none}
+.brand img{height:40px;width:auto}
+
+.nav{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.nav a{
+  padding:.5rem .7rem;border-radius:10px;text-decoration:none;
+  color:var(--muted);transition:.2s ease;
+}
+.nav a:hover{background:var(--surface);color:var(--text)}
+.nav a.is-active{
+  background:color-mix(in srgb, var(--brand-light) 55%, #fff);
+  color:#213018;border:1px solid var(--brand-dark);
+}
+
+/* Menu CTA */
+.nav .btn{
+  background:var(--brand-dark);
+  color:#fff !important;
+  border-radius:var(--radius);
+  padding:.6rem 1.2rem;font-weight:500;
+}
+.nav .btn:hover{background:var(--brand);color:#fff !important}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  border-radius:var(--radius);padding:.7rem 1.4rem;border:1px solid transparent;
+  cursor:pointer;text-decoration:none;background:var(--brand-dark);color:#fff;font-weight:500;
+  transition:background .25s ease, transform .15s ease;text-align:center;
+}
+.btn:hover{background:var(--brand);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.btn:active{transform:translateY(1px)}
+.btn-center{display:block;margin:1rem auto 0;max-width:fit-content}
+
+.btn-light{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.6rem 1.2rem;border-radius:var(--radius);
+  border:1px solid var(--border);background:var(--surface-2);color:var(--text);
+  font-weight:500;text-decoration:none;transition:background .25s ease,color .25s ease;
+}
+.btn-light:hover{background:var(--brand-dark);color:#fff;border-color:var(--brand-dark)}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding:72px 0 56px;
+  background:
+    radial-gradient(1100px 380px at 10% -10%, color-mix(in srgb, var(--brand-light) 45%, #fff), transparent 70%),
+    linear-gradient(180deg, #fff, #fff);
+  border-bottom:1px solid var(--border);
+}
+.hero-grid{display:grid;gap:24px;grid-template-columns:1.2fr .8fr}
+@media (max-width:880px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{margin:.2rem 0 .75rem;font-size:clamp(2rem,4.5vw,3rem);line-height:1.1}
+.hero p{color:var(--muted)}
+.hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.6rem}
+
+/* ---------- Fade slider ---------- */
+.fade-slider{
+  position:relative;width:100%;aspect-ratio:16/9;height:clamp(220px,56vw,520px);
+  overflow:hidden;border-radius:0;box-shadow:0 4px 12px rgba(0,0,0,.2);background:#000;
+}
+.fade-slider .slides{position:relative;width:100%;height:100%}
+.fade-slider .slides img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  animation:crossfade 24s infinite ease-in-out;will-change:opacity;pointer-events:none;
+}
+.fade-slider .slides img:nth-child(1){animation-delay:0s}
+.fade-slider .slides img:nth-child(2){animation-delay:8s}
+.fade-slider .slides img:nth-child(3){animation-delay:16s}
+
+@keyframes crossfade{
+  0%{opacity:0} 8%{opacity:1} 34%{opacity:1} 42%{opacity:0} 100%{opacity:0}
+}
+
+/* zelený filtr přes celý slider */
+.fade-slider::after{
+  content:"";position:absolute;inset:0;background:rgba(164,174,143,.28);
+  pointer-events:none;z-index:1;
+}
+
+/* overlay text */
+.fade-slider .slider-overlay{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  text-align:center;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);z-index:2;
+}
+.fade-slider .slider-overlay h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 .5rem}
+.fade-slider .slider-overlay p{margin:0 0 1rem;font-size:1.2rem}
+
+/* prefer-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .fade-slider .slides img{animation:none;opacity:1}
+}
+
+/* Mobil: schovej podnadpis v hero slideru */
+@media (max-width:640px){
+  .fade-slider .slider-overlay p{display:none !important}
+}
+
+/* ---------- Grid & Cards ---------- */
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+.card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;
+  box-shadow:var(--shadow-sm);transition:box-shadow .25s ease, transform .25s ease;
+}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.card h3{margin:.2rem 0 .5rem;font-size:1.12rem}
+.card p{margin:0;color:var(--muted)}
+
+/* ---------- About / Services ---------- */
+.about .list{display:grid;gap:8px;padding-left:1rem;margin:1rem 0 0}
+.about .list li{margin-left:.4rem}
+.services .card ul{margin:.75rem 0 0;padding-left:1.1rem}
+.services .card li{margin:.25rem 0}
+
+/* ---------- Pricing ---------- */
+.pricing .price{font-weight:700;font-size:1.2rem;margin:.5rem 0}
+.pricing .features{list-style:none;padding:0;margin:0;display:grid;gap:.4rem}
+.pricing .features li{position:relative;padding-left:1.2rem}
+.pricing .features li::before{content:"✓";position:absolute;left:0;top:0;color:var(--brand-dark);font-weight:700}
+
+/* ---------- Surfaces & Badges ---------- */
+.surface{
+  background:color-mix(in srgb, var(--brand-light) 20%, #fff);
+  border:1px solid color-mix(in srgb, var(--brand-light) 40%, var(--border));
+  border-radius:var(--radius);padding:18px;
+}
+.badge{
+  display:inline-block;padding:.25rem .6rem;border-radius:999px;
+  background:var(--brand-light);color:#213018;border:1px solid var(--brand-dark);
+  font-size:.84rem;
+}
+
+/* ---------- Forms ---------- */
+form{display:grid;gap:14px}
+.label{font-weight:600}
+.input,.select,.textarea{
+  width:100%;padding:.72rem .9rem;border:1px solid var(--border);
+  border-radius:12px;background:#fff;color:var(--text);
+  transition:border-color .2s ease, box-shadow .2s ease;
+  font-family:var(--font-sans);
+}
+.textarea{min-height:140px;resize:vertical}
+.input:focus,.select:focus,.textarea:focus{
+  border-color:var(--brand-dark);
+  box-shadow:0 0 0 4px color-mix(in srgb, var(--brand-light) 35%, transparent);
+  outline:none;
+}
+.help{color:var(--muted);font-size:.92rem}
+.form-grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media (max-width:720px){.form-grid{grid-template-columns:1fr}}
+.form-note{font-size:.95rem;color:var(--muted)}
+
+/* ---------- Blog cards ---------- */
+.posts{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}
+@media (max-width:980px){.posts{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.posts{grid-template-columns:1fr}}
+.post{
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:#fff;overflow:hidden;box-shadow:var(--shadow-sm);
+}
+.post .cover{aspect-ratio:16/9;background:var(--surface-2)}
+.post .body{padding:16px}
+.post .title{font-weight:700;margin:.1rem 0 .3rem;font-size:1.05rem}
+.post .meta{color:var(--muted);font-size:.92rem}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  padding:36px 0;background:var(--brand);color:#fff;font-size:.98rem;
+}
+.site-footer a{color:#fff;text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.site-footer .cols{display:grid;gap:16px;grid-template-columns:2fr 1fr 1fr}
+@media (max-width:880px){.site-footer .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.site-footer .cols{grid-template-columns:1fr}}
+
+/* ---------- Map embed ---------- */
+.map-embed{margin-top:16px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.map-embed iframe{display:block;width:100%;aspect-ratio:16/9;min-height:320px;border:0}
+
+/* ---------- Quick links ---------- */
+.quick-links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.2rem}
+.quick-links .btn{font-size:1rem;padding:.7rem 1.4rem}
+@media (max-width:640px){
+  .quick-links{flex-direction:column;align-items:stretch}
+  .quick-links .btn-light{width:100%;text-align:center}
+}
+
+/* ---------- Stats ---------- */
+.stat-card{text-align:center;padding:2rem 1rem}
+.stat-card h3{font-size:1rem;margin-bottom:.6rem;color:var(--muted)}
+.stat-number{font-size:2rem;font-weight:700;color:var(--brand-dark)}
+.stat-logo{margin-top:.5rem;max-width:80px;height:auto;display:block;margin-left:auto;margin-right:auto}
+
+/* ---------- About photo ---------- */
+.about-photo{
+  width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);
+}
+
+/* ---------- Mobile hamburger ---------- */
+.nav-toggle{
+  display:none;background:transparent;border:0;padding:.4rem .5rem;border-radius:10px;cursor:pointer;
+}
+.nav-toggle:focus-visible{outline:2px solid var(--brand-dark);outline-offset:2px}
+.nav-toggle-bar{display:block;width:26px;height:2px;margin:5px 0;background:var(--text);transition:transform .2s ease, opacity .2s ease}
+
+@media (max-width:920px){
+  .nav-toggle{display:flex;align-items:center;justify-content:center}
+  .nav{
+    position:absolute;right:1rem;top:64px;z-index:999;background:#fff;border:1px solid var(--border);
+    border-radius:12px;box-shadow:var(--shadow-md);padding:.5rem;width:min(92vw,320px);display:none;
+  }
+  .nav a{display:block;padding:.65rem .75rem}
+  .nav a.btn{display:block;text-align:center;margin:.25rem 0}
+  .nav.is-open{display:block !important}
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(2){opacity:0}
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .site-header,.hero,.nav,.btn{display:none !important}
+  .section{padding:12px 0}
+  a{text-decoration:underline}
+}
+
+/* ---------- Surface section bg ---------- */
+.bg-surface{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+/* ---------- DARK MODE (konsolidovaný) ---------- */
+@media (prefers-color-scheme: dark){
+  /* Tokens */
+  :root{
+    --bg:#0b1220; --surface:#0f172a; --surface-2:#111827;
+    --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937;
+  }
+
+  .site-header{background:rgba(11,18,32,.7);border-color:var(--border)}
+  .nav a:hover{background:#101826}
+  .card,.post,.site-footer{background:var(--surface)}
+  .btn-ghost{background:transparent;color:var(--text);border-color:#253049}
+  .surface{
+    background:color-mix(in srgb, var(--brand-dark) 10%, var(--surface));
+    border-color:color-mix(in srgb, var(--brand-dark) 30%, var(--border));
+  }
+
+  h3{color:var(--brand-dark)}
+  .card p,.card li{color:#e2e8f0}
+  .pricing .price{color:var(--brand-dark)}
+
+  /* ✅ Labely bílé */
+  label, .label{color:#ffffff !important}
+
+  /* Form fix – kontrastní pole jen v #objednat */
+  #objednat input,
+  #objednat select,
+  #objednat textarea{
+    color:#000 !important;
+    background-color:#fff !important;
+    border:1px solid #d1d5db !important;
+  }
+  #objednat input::placeholder,
+  #objednat textarea::placeholder{color:#555 !important}
+
+  /* Podnadpisy na tmavém pozadí */
+  .section-sub{color:#ffffff !important}
+}
+/* Prague Psychotherapy – styles.css (Figtree + sage paleta) */
 :root {
     --bg: #ffffff;
     --surface: #f6f7f8;
