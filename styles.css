@@ -1027,3 +1027,35 @@ form{display:grid;gap:14px}
   border-radius: var(--radius); /* ✅ stejné zaoblení jako karty */
   box-shadow: var(--shadow-sm);
 }
+/* Dark mode – formuláře: světlé pole + tmavý text */
+@media (prefers-color-scheme: dark){
+  #objednat input:not([type="checkbox"]):not([type="radio"]),
+  #objednat select,
+  #objednat textarea,
+  #objednat .input, #objednat .select, #objednat .textarea {
+    background: #fff !important;
+    color: #0f172a !important;               /* tmavý text */
+    -webkit-text-fill-color: #0f172a !important; /* Chrome/Safari */
+    border: 1px solid #d1d5db !important;
+    caret-color: #0f172a !important;
+  }
+
+  #objednat input::placeholder,
+  #objednat textarea::placeholder {
+    color: #555 !important;                  /* tmavší placeholder */
+  }
+
+  /* Přepiš i autofill (jinak si drží vlastní „zelené“ barvy) */
+  #objednat input:-webkit-autofill,
+  #objednat textarea:-webkit-autofill,
+  #objednat select:-webkit-autofill {
+    -webkit-text-fill-color: #0f172a !important;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    border: 1px solid #d1d5db !important;
+    caret-color: #0f172a !important;
+  }
+
+  /* Labely necháme bílé kvůli kontrastu na tmavém pozadí stránky */
+  #objednat label, 
+  #objednat .label { color: #fff !important; }
+}
