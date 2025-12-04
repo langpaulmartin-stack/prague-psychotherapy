@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jak na úzkost v každodenním životě | Blog | Prague Psychotherapy</title>
+  <meta name="description" content="Praktické kroky, jak rozpoznat spouštěče úzkosti a co funguje v běžném dni: dech, tělo, myšlenky a jednoduché návyky.">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp" alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#onas">O nás</a>
+        <a href="index.html#sluzby">Co nabízíme</a>
+        <a href="index.html#kde-cena">Ceník</a>
+        <a href="index.html#terapeuti">Naši terapeuté</a>
+        <a href="index.html#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <img src="https://picsum.photos/1200/630?random=101" alt="Jak na úzkost v každodenním životě"
+             style="width:100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:24px;">
+      <div class="container" style="max-width: 860px;">
+        <p class="section-sub" style="margin-bottom:.25rem;">Publikováno: <time datetime="2025-09-12">12.&nbsp;9.&nbsp;2025</time></p>
+        <p class="section-sub" style="margin-bottom:.75rem;">Autor: <a href="martin-langpaul.html">Martin Langpaul</a></p>
+
+        <h1 class="section-title" style="margin-bottom:.75rem;">Jak na úzkost v každodenním životě</h1>
+        <p class="section-sub" style="margin-bottom:1.5rem;">Úzkost je běžná lidská emoce. Pomůže, když víme, co ji spouští a jak na ni účinně reagovat v běžném dni.</p>
+
+        <article class="prose">
+          <h3>Rozpoznejte spouštěče</h3>
+          <p>Zapisujte si situace, ve kterých úzkost sílí: prostředí, lidé, denní doba. Vznikne mapa, se kterou lze lépe pracovat.</p>
+
+          <h3>Uzemnění: tělo → dech → zrak</h3>
+          <ul>
+            <li><strong>Dech:</strong> nádech nosem 4 s – výdech 6 s, 1–2 minuty.</li>
+            <li><strong>Tělo:</strong> vědomé napnutí a uvolnění velkých svalových skupin.</li>
+            <li><strong>Zrak:</strong> najděte 5 věcí kolem sebe a popište si je (tvar, barva, textura).</li>
+          </ul>
+
+          <h3>Práce s myšlenkami</h3>
+          <p>Všímejte si „co když…“ scénářů. Zkuste protiotázku: „Co bych řekl/a nejlepšímu příteli v této situaci?“</p>
+
+          <h3>Mikronávyky</h3>
+          <ul>
+            <li>krátké pauzy během dne,</li>
+            <li>pohyb venku,</li>
+            <li>omezení kofeinu po obědě,</li>
+            <li>večerní digitální klid.</li>
+          </ul>
+
+          <p><em>Když úzkost dlouhodobě omezuje váš život, vyplatí se probrat možnosti v psychoterapii.</em></p>
+        </article>
+
+        <div class="quick-links" style="margin-top:24px;">
+          <a href="blog.html" class="btn-light">← Zpět na blog</a>
+          <a href="index.html" class="btn-light">Domů</a>
+          <a href="index.html#objednat" class="btn">Chci se objednat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© <span id="year"></span> Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="index.html#objednat">Objednat</a></div>
+      <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const path = location.pathname.split('/').pop();
+    const active = document.querySelector('.nav a[href="' + path + '"]');
+    if (active) active.classList.add('is-active');
+  </script>
+</body>
+</html>

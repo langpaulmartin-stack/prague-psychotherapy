@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proč si vést deník emocí | Blog | Prague Psychotherapy</title>
+  <meta name="description" content="Objevte, proč je deník emocí užitečný pro zvládání stresu a osobní rozvoj. Praktické tipy z psychoterapie pro lepší duševní zdraví.">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HLAVIČKA -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp" 
+             alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#onas">O nás</a>
+        <a href="index.html#sluzby">Co nabízíme</a>
+        <a href="index.html#kde-cena">Ceník</a>
+        <a href="index.html#terapeuti">Naši terapeuté</a>
+        <a href="index.html#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO OBRÁZEK ČLÁNKU -->
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <img src="https://picsum.photos/1200/630?random=2" alt="Deník emocí"
+             style="width:100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+      </div>
+    </section>
+
+    <!-- OBSAH ČLÁNKU -->
+    <section class="section" style="padding-top:24px;">
+      <div class="container" style="max-width: 860px;">
+        <p class="section-sub" style="margin-bottom:.25rem;">Publikováno: <time datetime="2025-09-22">22.&nbsp;9.&nbsp;2025</time></p>
+        <p class="section-sub" style="margin-bottom:.75rem;">Autor: <a href="martin-langpaul.html">Martin Langpaul</a></p>
+        
+        <h1 class="section-title" style="margin-bottom: .75rem;">Proč si vést deník emocí</h1>
+        <p class="section-sub" style="margin-bottom: 1.5rem;">Deník emocí je jednoduchý, ale účinný nástroj, který vám pomůže lépe porozumět sobě samým a zlepšit duševní zdraví.</p>
+
+        <article class="prose">
+          <p>Emoce hrají zásadní roli v našem životě – ovlivňují naše rozhodování, vztahy i celkovou spokojenost. 
+             <strong>Deník emocí</strong> je metoda, kterou často doporučujeme i v psychoterapii. 
+             Pomáhá zpomalit, zastavit se a zaznamenat, co se uvnitř nás skutečně odehrává.</p>
+
+          <h3>Jak deník emocí funguje?</h3>
+          <p>Každý den si zapisujete:</p>
+          <ul>
+            <li>jaké emoce jste prožívali,</li>
+            <li>v jaké situaci se objevily,</li>
+            <li>jak jste na ně reagovali – v těle i v myšlenkách,</li>
+            <li>co vám pomohlo emoce zvládnout.</li>
+          </ul>
+
+          <p>Tento proces podporuje <em>sebereflexi</em> a umožňuje sledovat vzorce chování, které si jinak nemusíme uvědomovat.</p>
+
+          <h3>Proč je deník emocí užitečný?</h3>
+          <ul>
+            <li><strong>Lepší porozumění sobě</strong> – poznáte, co vás nejčastěji spouští a co vám naopak pomáhá.</li>
+            <li><strong>Snížení stresu</strong> – samotné pojmenování emocí přináší úlevu.</li>
+            <li><strong>Podpora psychoterapie</strong> – zápisky jsou užitečným zdrojem pro práci s terapeutem.</li>
+            <li><strong>Osobní růst</strong> – učíte se vědoměji zvládat náročné situace a zvyšujete svou odolnost.</li>
+          </ul>
+
+          <h3>Tipy, jak začít</h3>
+          <p>Nepotřebujete nic složitého – stačí sešit nebo aplikace v telefonu. Vyberte si chvíli, kdy budete psát pravidelně, třeba večer. 
+             Nebojte se být upřímní – deník je jen pro vás. Pište i krátce, důležitá je pravidelnost.</p>
+
+          <p><em>Deník emocí může být prvním krokem k větší vnitřní stabilitě a hlubšímu sebepoznání.</em></p>
+        </article>
+
+        <!-- NAVIGACE DOLE -->
+        <div class="quick-links" style="margin-top: 24px;">
+          <a href="blog.html" class="btn-light">← Zpět na blog</a>
+          <a href="index.html" class="btn-light">Domů</a>
+          <a href="index.html#objednat" class="btn">Chci se objednat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PATIČKA -->
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© <span id="year"></span> Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="index.html#objednat">Objednat</a></div>
+      <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Rok v patičce
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // zvýraznění aktivní položky v menu
+    const path = location.pathname.split('/').pop();
+    const active = document.querySelector('.nav a[href="' + path + '"]');
+    if (active) active.classList.add('is-active');
+  </script>
+</body>
+</html>

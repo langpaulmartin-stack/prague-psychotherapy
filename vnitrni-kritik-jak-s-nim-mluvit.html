@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vnitřní kritik: jak s ním mluvit | Blog | Prague Psychotherapy</title>
+  <meta name="description" content="Praktické tipy, jak zkrotit vnitřního kritika a proměnit ho v užitečného rádce: re-framing, důkazy a laskavý tón.">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp" alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#onas">O nás</a>
+        <a href="index.html#sluzby">Co nabízíme</a>
+        <a href="index.html#kde-cena">Ceník</a>
+        <a href="index.html#terapeuti">Naši terapeuté</a>
+        <a href="index.html#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <img src="https://picsum.photos/1200/630?random=103" alt="Vnitřní kritik: jak s ním mluvit"
+             style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:var(--radius); box-shadow:var(--shadow-sm);">
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:24px;">
+      <div class="container" style="max-width:860px;">
+        <p class="section-sub" style="margin-bottom:.25rem;">Publikováno: <time datetime="2025-09-05">5.&nbsp;9.&nbsp;2025</time></p>
+        <p class="section-sub" style="margin-bottom:.75rem;">Autor: <a href="martin-langpaul.html">Martin Langpaul</a></p>
+
+        <h1 class="section-title" style="margin-bottom:.75rem;">Vnitřní kritik: jak s ním mluvit</h1>
+        <p class="section-sub" style="margin-bottom:1.5rem;">Kritický hlas má chránit, když se to přežene, ochromuje. Jak s ním navázat užitečnější vztah?</p>
+
+        <article class="prose">
+          <h3>Pojmenujte ho</h3>
+          <p>Dejte mu jméno a roli. Lépe si uvědomíte, kdy mluví on a kdy vy.</p>
+
+          <h3>Důkazy místo nálepek</h3>
+          <p>Nahraďte „jsem neschopný/á“ otázkou „jaké mám důkazy pro a proti?“</p>
+
+          <h3>Laskavý re-framing</h3>
+          <p>„Chceš mě chránit před selháním. Děkuju – a zkusíme to krok po kroku.“</p>
+        </article>
+
+        <div class="quick-links" style="margin-top:24px;">
+          <a href="blog.html" class="btn-light">← Zpět na blog</a>
+          <a href="index.html" class="btn-light">Domů</a>
+          <a href="index.html#objednat" class="btn">Chci se objednat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© <span id="year"></span> Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="index.html#objednat">Objednat</a></div>
+      <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const path = location.pathname.split('/').pop();
+    const active = document.querySelector('.nav a[href="' + path + '"]');
+    if (active) active.classList.add('is-active');
+  </script>
+</body>
+</html>
+    

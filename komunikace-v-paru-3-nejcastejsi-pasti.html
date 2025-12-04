@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Komunikace v páru: 3 nejčastější pasti | Blog | Prague Psychotherapy</title>
+  <meta name="description" content="Tři komunikační pasti ve vztahu a jak z nich ven: obrana–útok, čtení myšlenek a eskalace. Praktické věty, které pomáhají.">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp" alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#onas">O nás</a>
+        <a href="index.html#sluzby">Co nabízíme</a>
+        <a href="index.html#kde-cena">Ceník</a>
+        <a href="index.html#terapeuti">Naši terapeuté</a>
+        <a href="index.html#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <img src="https://picsum.photos/1200/630?random=102" alt="Komunikace v páru: 3 nejčastější pasti"
+             style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:var(--radius); box-shadow:var(--shadow-sm);">
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:24px;">
+      <div class="container" style="max-width:860px;">
+        <p class="section-sub" style="margin-bottom:.25rem;">Publikováno: <time datetime="2025-09-08">8.&nbsp;9.&nbsp;2025</time></p>
+        <p class="section-sub" style="margin-bottom:.75rem;">Autor: <a href="martin-langpaul.html">Martin Langpaul</a></p>
+
+        <h1 class="section-title" style="margin-bottom:.75rem;">Komunikace v páru: 3 nejčastější pasti</h1>
+        <p class="section-sub" style="margin-bottom:1.5rem;">Když se cyklus nepříjemných rozhovorů opakuje, často to není „o tématu“, ale o způsobu, jak spolu mluvíme.</p>
+
+        <article class="prose">
+          <h3>1) Obrana–útok</h3>
+          <p>Zacyklení: jeden útočí, druhý se brání. <strong>Pomůcka:</strong> „Chci ti rozumět. Zastavme se na minutu.“</p>
+
+          <h3>2) Čtení myšlenek</h3>
+          <p>Předpokládáme úmysly druhého. <strong>Pomůcka:</strong> „Jak jsi to myslel/a?“ místo domněnek.</p>
+
+          <h3>3) Eskalace</h3>
+          <p>Roste hlas, klesá respekt. <strong>Pomůcka:</strong> pauza 20 minut a návrat k tématu.</p>
+
+          <h3>Krátký rámec věty</h3>
+          <p>„Když se stane <em>X</em>, cítím <em>Y</em> a potřebuji <em>Z</em>. Pomůže mi, když…“</p>
+        </article>
+
+        <div class="quick-links" style="margin-top:24px;">
+          <a href="blog.html" class="btn-light">← Zpět na blog</a>
+          <a href="index.html" class="btn-light">Domů</a>
+          <a href="index.html#objednat" class="btn">Chci se objednat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© <span id="year"></span> Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="index.html#objednat">Objednat</a></div>
+      <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const path = location.pathname.split('/').pop();
+    const active = document.querySelector('.nav a[href="' + path + '"]');
+    if (active) active.classList.add('is-active');
+  </script>
+</body>
+</html>

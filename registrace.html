@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Termíny a přihlašování na supervizi | Prague Psychotherapy</title>
+  <meta name="description" content="Aktuální termíny skupinových supervizí a registrační formulář pro účastníky výcviku. Čisté HTML bez CSS a bez frameworků." />
+  <link rel="canonical" href="https://example.com/registrace-supervize" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Prague Psychotherapy",
+    "url": "https://example.com",
+    "logo": "https://example.com/logo.png"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav aria-label="Hlavní navigace">
+      <p><strong>Prague Psychotherapy</strong></p>
+      <ul>
+        <li><a href="#terminy">Termíny</a></li>
+        <li><a href="#registrace">Přihláška</a></li>
+        <li><a href="#podminky">Podmínky</a></li>
+        <li><a href="/">Domů</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="podminky" aria-labelledby="nadpis">
+      <h1 id="nadpis">Termíny a přihlašování na supervizi</h1>
+      <p>Supervize je určena absolventům sebezkušenostní části výcviku a frekventantům po završení <strong>350 hodin</strong> sebezkušenostního výcviku. Přihlášení nejpozději 14 dní před konáním, odhlášení do 7 dní předem.</p>
+      <p><strong>Organizace & platby:</strong> Do seznamu přihlášených zapisujeme až po připsání platby na účet. Při pozdním zrušení (&lt; 7 dní) propadá poplatek. Minimální počet účastníků jsou 4 osoby.</p>
+    </section>
+
+    <section id="terminy" aria-labelledby="terminy-title">
+      <h2 id="terminy-title">Dostupné termíny</h2>
+      <label for="q">Hledat (datum, supervizor, místo…)</label>
+      <input id="q" type="search" placeholder="Např. 10.9.2025, Chytrý, online, Praha…" aria-controls="tbl" />
+
+      <div role="region" aria-labelledby="terminy-title">
+        <table id="tbl">
+          <thead>
+            <tr>
+              <th>Datum & cena</th>
+              <th>Supervizor</th>
+              <th>Místo</th>
+              <th>Kontakt</th>
+              <th>Volná místa</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-body">
+            <tr data-id="2025-08-08">
+              <td><strong>8. 8. 2025</strong><br>9:00–15:15 • <strong>2 100 Kč</strong></td>
+              <td>Mgr. Martina Kukolová (zdravotnická garance)</td>
+              <td>Online</td>
+              <td>mar.kukolova@gmail.com • 607 911 917</td>
+              <td>2 volná</td>
+            </tr>
+            <tr data-id="2025-09-10">
+              <td><strong>10. 9. 2025</strong><br>9:00–17:00 • <strong>2 800 Kč</strong></td>
+              <td>PaedDr. Michael Chytrý</td>
+              <td>Pozor – změna adresy: Jitřní 8, Praha 4 – Hodkovičky</td>
+              <td>602 319 605</td>
+              <td>plně obsazeno</td>
+            </tr>
+            <tr data-id="2025-09-23">
+              <td><strong>23. 9. 2025</strong><br>9:00–17:00 • <strong>2 800 Kč</strong></td>
+              <td>PhDr. Jan Konopásek, LL.M.</td>
+              <td>PKC s.r.o., Ječná 548/7, Praha 2</td>
+              <td>—</td>
+              <td>5 volných</td>
+            </tr>
+            <tr data-id="2025-10-01">
+              <td><strong>1. 10. 2025</strong><br>9:00–17:00 • <strong>2 800 Kč</strong></td>
+              <td>PaedDr. Michael Chytrý</td>
+              <td>Pozor – změna adresy: Jitřní 8, Praha 4 – Hodkovičky</td>
+              <td>602 319 605</td>
+              <td>plně obsazeno</td>
+            </tr>
+            <tr data-id="2025-10-16">
+              <td><strong>16. 10. 2025</strong><br>9:00–17:00 • <strong>2 800 Kč</strong></td>
+              <td>PhDr. Jan Konopásek, LL.M.</td>
+              <td>PKC s.r.o., Ječná 548/7, Praha 2</td>
+              <td>—</td>
+              <td>5 volných</td>
+            </tr>
+            <tr data-id="2025-10-24">
+              <td><strong>24. 10. 2025</strong><br>9:00–15:15 • <strong>2 100 Kč</strong></td>
+              <td>Mgr. Martina Kukolová (zdravotnická garance)</td>
+              <td>Online</td>
+              <td>mar.kukolova@gmail.com • 607 911 917</td>
+              <td>5 volných</td>
+            </tr>
+            <tr data-id="2025-11-20">
+              <td><strong>20. 11. 2025</strong><br>9:00–17:00 • <strong>2 800 Kč</strong></td>
+              <td>PaedDr. Michael Chytrý</td>
+              <td>Pozor – změna adresy: Jitřní 8, Praha 4 – Hodkovičky</td>
+              <td>602 319 605</td>
+              <td>plně obsazeno</td>
+            </tr>
+            <tr data-id="2025-12-05">
+              <td><strong>5. 12. 2025</strong><br>9:00–15:15 • <strong>2 100 Kč</strong></td>
+              <td>Mgr. Martina Kukolová (zdravotnická garance)</td>
+              <td>Online</td>
+              <td>mar.kukolova@gmail.com • 607 911 917</td>
+              <td>5 volných</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Tip: v přihlášce níže si můžete termín vybrat z nabídky, nebo zadat vlastní text.</p>
+    </section>
+
+    <section id="registrace" aria-labelledby="form-title">
+      <h2 id="form-title">Přihláška / odhláška na supervizi</h2>
+      <form id="reg-form" novalidate>
+        <div role="group" aria-label="Akce">
+          <label><input type="radio" name="akce" value="Přihlašuji se" checked> Přihlašuji se</label>
+          <label><input type="radio" name="akce" value="Odhlašuji se"> Odhlašuji se</label>
+        </div>
+
+        <label for="jmeno">Jméno a příjmení *</label>
+        <input id="jmeno" name="jmeno" type="text" autocomplete="name" required />
+
+        <label for="email">E‑mail *</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required />
+
+        <label for="telefon">Telefonní číslo *</label>
+        <input id="telefon" name="telefon" type="tel" inputmode="tel" pattern="^[+0-9][0-9\s]{5,}$" placeholder="např. +420 777 123 456" required />
+
+        <label for="termin">Termín supervize (můžete upravit) *</label>
+        <input id="termin" name="termin" list="terminy-list" required />
+        <datalist id="terminy-list">
+          <option value="8. 8. 2025 – 9:00–15:15 – online – 2 100 Kč – Mgr. Martina Kukolová"></option>
+          <option value="10. 9. 2025 – 9:00–17:00 – Praha 4 – 2 800 Kč – PaedDr. Michael Chytrý"></option>
+          <option value="23. 9. 2025 – 9:00–17:00 – Praha 2 – 2 800 Kč – PhDr. Jan Konopásek"></option>
+          <option value="1. 10. 2025 – 9:00–17:00 – Praha 4 – 2 800 Kč – PaedDr. Michael Chytrý"></option>
+          <option value="16. 10. 2025 – 9:00–17:00 – Praha 2 – 2 800 Kč – PhDr. Jan Konopásek"></option>
+          <option value="24. 10. 2025 – 9:00–15:15 – online – 2 100 Kč – Mgr. Martina Kukolová"></option>
+          <option value="5. 12. 2025 – 9:00–15:15 – online – 2 100 Kč – Mgr. Martina Kukolová"></option>
+        </datalist>
+
+        <label for="supervizor">Jméno supervizora *</label>
+        <input id="supervizor" name="supervizor" required />
+
+        <label for="komunita">Výcviková komunita *</label>
+        <input id="komunita" name="komunita" required />
+
+        <label for="rok">Rok ukončení výcviku / datum završení 350 h *</label>
+        <input id="rok" name="rok" placeholder="např. 2024 nebo 05/2024" required />
+
+        <label for="zprava">Poznámka (nepovinné)</label>
+        <textarea id="zprava" name="zprava" placeholder="Doplňující informace…"></textarea>
+
+        <!-- Honeypot (skrytý bez CSS) -->
+        <input id="company" name="company" hidden aria-hidden="true" autocomplete="off" />
+
+        <label><input id="souhlas" name="souhlas" type="checkbox" required> Souhlasím se zpracováním osobních údajů pro účely organizace supervize a se zveřejněním jména mezi přihlášenými. *</label>
+        <p><small>Více viz <a href="/gdpr.html">Zásady ochrany osobních údajů</a>.</small></p>
+
+        <button type="submit" id="submit-btn">Odeslat</button>
+        <button type="button" id="mail-btn" title="Pokud vám nefunguje odeslání, zkuste e‑mail">Odeslat e‑mailem</button>
+        <div id="status" aria-live="polite"></div>
+      </form>
+      <p>Po přijetí platby budete zapsáni do seznamu účastníků. V případě naplnění kapacity vás zařadíme mezi čekající a budeme vás kontaktovat.</p>
+    </section>
+
+    <footer>
+      <p>© <span id="y"></span> Prague Psychotherapy • <a href="#">Kontakt</a></p>
+    </footer>
+  </main>
+
+  <script>
+    // === KONFIGURACE ODESLÁNÍ ===
+    const FORM_ENDPOINT = ""; // např. "https://script.google.com/macros/s/AKfycb.../exec"
+    const EMAIL_TO = "info@prague-psychotherapy.cz"; // změňte na svůj sběrný e‑mail
+
+    const $ = (sel, parent = document) => parent.querySelector(sel);
+    const $$ = (sel, parent = document) => Array.from(parent.querySelectorAll(sel));
+
+    // Rok v patičce
+    $('#y').textContent = new Date().getFullYear();
+
+    // Filtrování tabulky termínů
+    const q = $('#q');
+    const rows = $$('#schedule-body tr');
+    q.addEventListener('input', () => {
+      const v = q.value.trim().toLowerCase();
+      rows.forEach(tr => {
+        const text = tr.textContent.toLowerCase();
+        tr.style.display = text.includes(v) ? '' : 'none';
+      });
+    });
+
+    // Předvyplnit supervizora podle zvoleného termínu (pokud to jde)
+    const inputTerm = $('#termin');
+    const inputSuper = $('#supervizor');
+    inputTerm.addEventListener('change', () => {
+      const m = inputTerm.value.match(/–\s([^–]+)$/); // poslední část za pomlčkou
+      if (m && m[1]) inputSuper.value = m[1].trim();
+    });
+
+    // Odeslání formuláře (fetch → endpoint | fallback mailto)
+    const form = $('#reg-form');
+    const statusEl = $('#status');
+    const submitBtn = $('#submit-btn');
+    const mailBtn = $('#mail-btn');
+
+    function getFormData() {
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+      return data;
+    }
+
+    function validateRequired() {
+      const required = ['jmeno','email','telefon','termin','supervizor','komunita','rok'];
+      for (const name of required) {
+        const el = document.getElementById(name);
+        if (!el || !el.checkValidity() || !el.value.trim()) return false;
+      }
+      const hp = document.getElementById('company');
+      if (hp && hp.value) return false; // honeypot vyplněn → spam
+      const consent = document.getElementById('souhlas');
+      return consent && consent.checked;
+    }
+
+    async function sendToEndpoint(data) {
+      const resp = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'ppw-supervize-registrace',
+          timestamp: new Date().toISOString(),
+          ...data
+        }),
+      });
+      if (!resp.ok) throw new Error('Chyba při odesílání');
+      return await resp.json().catch(() => ({}));
+    }
+
+    function buildMailto(data) {
+      const subject = encodeURIComponent(`${data.akce || 'Přihláška'} – supervize`);
+      const body = encodeURIComponent(
+        `Akce: ${data.akce}\n`+
+        `Jméno: ${data.jmeno}\n`+
+        `E‑mail: ${data.email}\n`+
+        `Telefon: ${data.telefon}\n`+
+        `Termín: ${data.termin}\n`+
+        `Supervizor: ${data.supervizor}\n`+
+        `Komunita: ${data.komunita}\n`+
+        `Rok/350 h: ${data.rok}\n`+
+        `Poznámka: ${data.zprava || ''}`
+      );
+      return `mailto:${EMAIL_TO}?subject=${subject}&body=${body}`;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = '';
+      if (!validateRequired()) {
+        statusEl.textContent = 'Zkontrolujte prosím povinná pole a souhlas se zpracováním.';
+        return;
+      }
+      const data = getFormData();
+      submitBtn.disabled = true;
+      try {
+        if (FORM_ENDPOINT) {
+          await sendToEndpoint(data);
+          statusEl.textContent = 'Děkujeme! Přihláška byla odeslána. Brzy se vám ozveme.';
+          form.reset();
+        } else {
+          // fallback – otevřít e‑mailového klienta
+          const href = buildMailto(data);
+          window.location.href = href;
+          statusEl.textContent = 'Otevírám e‑mailového klienta…';
+        }
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Omlouváme se, nepodařilo se odeslat. Zkuste to prosím znovu nebo použijte „Odeslat e‑mailem“.');
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    mailBtn.addEventListener('click', () => {
+      if (!validateRequired()) {
+        statusEl.textContent = 'Pro odeslání e‑mailem prosím vyplňte povinná pole.';
+        return;
+      }
+      const data = getFormData();
+      window.location.href = buildMailto(data);
+      statusEl.textContent = 'Otevírám e‑mailového klienta…';
+    });
+  </script>
+</body>
+</html>

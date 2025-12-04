@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jak si říct o pomoc | Blog | Prague Psychotherapy</title>
+  <meta name="description" content="Naučte se, jak si říct o pomoc v náročných chvílích. Praktické tipy, proč není slabost požádat o podporu a jak vám může pomoci psychoterapie.">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HLAVIČKA -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp" 
+             alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#onas">O nás</a>
+        <a href="index.html#sluzby">Co nabízíme</a>
+        <a href="index.html#kde-cena">Ceník</a>
+        <a href="index.html#terapeuti">Naši terapeuté</a>
+        <a href="index.html#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO OBRÁZEK ČLÁNKU -->
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <img src="https://picsum.photos/1200/630?random=3" alt="Jak si říct o pomoc"
+             style="width:100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-sm);">
+      </div>
+    </section>
+
+    <!-- OBSAH ČLÁNKU -->
+    <section class="section" style="padding-top:24px;">
+      <div class="container" style="max-width: 860px;">
+        <p class="section-sub" style="margin-bottom:.25rem;">Publikováno: <time datetime="2025-09-22">22.&nbsp;9.&nbsp;2025</time></p>
+        <p class="section-sub" style="margin-bottom:.75rem;">Autor: <a href="martin-langpaul.html">Martin Langpaul</a></p>
+        
+        <h1 class="section-title" style="margin-bottom: .75rem;">Jak si říct o pomoc</h1>
+        <p class="section-sub" style="margin-bottom: 1.5rem;">Požádat o pomoc není slabost, ale projev odvahy a péče o vlastní duševní zdraví. Jak na to, aby to bylo snazší?</p>
+
+        <article class="prose">
+          <p>Mnozí z nás jsou zvyklí zvládat problémy sami. Někdy ale přijde chvíle, kdy je toho příliš – a právě tehdy je důležité umět <strong>říct si o pomoc</strong>. 
+             Není to slabost, ale známka odvahy a zralosti. Ať už jde o přátele, rodinu nebo odborníky, otevřenost může přinést velkou úlevu.</p>
+
+          <h3>Proč je těžké požádat o podporu?</h3>
+          <ul>
+            <li>bojíme se, že budeme přítěží,</li>
+            <li>máme pocit, že bychom to měli zvládnout sami,</li>
+            <li>nevíme, jak o svých pocitech mluvit,</li>
+            <li>bojíme se odmítnutí nebo nepochopení.</li>
+          </ul>
+
+          <p>Tyto obavy jsou přirozené, ale často se ukáže, že lidé kolem nás chtějí pomoci – jen nevědí jak, dokud jim to neřekneme.</p>
+
+          <h3>Jak si o pomoc říct?</h3>
+          <ul>
+            <li><strong>Buďte konkrétní</strong> – řekněte, co právě potřebujete („Mohl bys mě jen vyslechnout?“).</li>
+            <li><strong>Začněte u blízkých</strong> – partner, přítel nebo člen rodiny bývá první volbou.</li>
+            <li><strong>Nezapomínejte na odborníky</strong> – psychoterapie, lékař nebo krizová linka jsou důležité zdroje podpory.</li>
+            <li><strong>Trénujte otevřenost</strong> – i malé kroky vás naučí sdílet pocity přirozeněji.</li>
+          </ul>
+
+          <h3>Proč se vyplatí otevřít?</h3>
+          <p>Když si dovolíme požádat o podporu, získáváme nejen úlevu, ale i nové pohledy na naši situaci. 
+             Sdílení snižuje pocit osamělosti a pomáhá budovat hlubší vztahy. 
+             A pokud se obrátíme na odborníka, můžeme začít aktivně pracovat na změně a lepším zvládání krizí.</p>
+
+          <p><em>Říct si o pomoc je krokem k větší síle a k životu, který zvládáme s větší lehkostí.</em></p>
+        </article>
+
+        <!-- NAVIGACE DOLE -->
+        <div class="quick-links" style="margin-top: 24px;">
+          <a href="blog.html" class="btn-light">← Zpět na blog</a>
+          <a href="index.html" class="btn-light">Domů</a>
+          <a href="index.html#objednat" class="btn">Chci se objednat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PATIČKA -->
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© <span id="year"></span> Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="index.html#objednat">Objednat</a></div>
+      <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Rok v patičce
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // zvýraznění aktivní položky v menu
+    const path = location.pathname.split('/').pop();
+    const active = document.querySelector('.nav a[href="' + path + '"]');
+    if (active) active.classList.add('is-active');
+  </script>
+</body>
+</html>
