@@ -33,6 +33,11 @@
              alt="Prague Psychotherapy logo">
         <span>Prague Psychotherapy</span>
       </a>
+      <button class="nav-toggle" type="button" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
       <nav class="nav">
         <a href="index.html#onas">O nás</a>
         <a href="index.html#sluzby">Co nabízíme</a>
@@ -130,18 +135,17 @@
     <div class="grid grid-3">
 
       <article class="card stat-card">
-        <h3>Počet výcvikových hodin</h3>
-        <p class="stat-number" data-target="1200">0</p>
-       
-          <p>Intenzivní vzdělávání</p>
-          <p>Výcviky akreditované ČAP</p>
-          <p>Pokročilé metody terapie</p>
+        <h3>Přijímám nové klienty?</h3>
+        <p class="stat-number">Ano</p>      
+          <p>Individuální terapie: ano</p>
+          <p>Muzikoterapie: ano</p>
+          <p>Tereapie v cizím jazyce: ano</p>
        
       </article>
 
       <article class="card stat-card">
         <h3>Počet hodin práce s klienty</h3>
-        <p class="stat-number" data-target="550">0</p>
+        <p class="stat-number" data-target="620">0</p>
       
         <p>Individuální sezení</p>
         <p>Párová terapie</p>
@@ -167,13 +171,7 @@
   
 
     <!-- VZDĚLÁNÍ A TERAPEUTICKÝ PŘÍSTUP -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Vzdělání a terapeutický přístup</h2>
-        <p>Po vyplnění online objednacího formuláře dohodneme termín prvního setkání. Při prvním sezení podepíšeme dohodu o psychoterapii a stanovíme frekvenci našich setkání.</p>
-      
-      </div>
-    </section>
+
 
    <!-- TERAPIE A CENY -->
 <section class="section bg-surface-2">
@@ -195,7 +193,7 @@
           </div>
           <h3>Individuální terapie</h3>
           <p>Osobní růst, práce s úzkostí, stresem, náladou i životními změnami.</p>
-          <p><strong>1 200 Kč / 50 minut</strong></p>
+          <p><strong>1 300 Kč / 50 minut</strong></p>
         </article>
   
         <article class="card">
@@ -207,7 +205,7 @@
           </div>
           <h3>Párová terapie</h3>
           <p>Zlepšení komunikace, porozumění a vztahové pohody.</p>
-          <p><strong>1 500 Kč / 75 minut</strong></p>
+          <p><strong>1 750 Kč / 75 minut</strong></p>
         </article>
   
         <article class="card">
@@ -305,5 +303,28 @@
   </script>
   
   
+
+  <script>
+    (function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const open = toggle.classList.toggle('is-open');
+        nav.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      nav.addEventListener('click', e => {
+        if (e.target.matches('a')) {
+          nav.classList.remove('is-open');
+          toggle.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
