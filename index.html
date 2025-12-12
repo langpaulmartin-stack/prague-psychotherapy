@@ -1,168 +1,5 @@
 <!DOCTYPE html>
 <html lang="cs">
-<!-- ===== Cookie lišta + Google Consent Mode v2 (CZ) – Prague Psychotherapy ===== -->
-<style>
-  .pp-cookie-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);backdrop-filter:saturate(130%) blur(2px);display:none;z-index:9998}
-  .pp-cookie-banner{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);width:min(720px,92%);background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,.18);padding:16px 16px 12px;z-index:9999;display:none;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#0f172a}
-  .pp-cookie-title{font-size:18px;margin:0 0 6px;font-weight:700}
-  .pp-cookie-text{font-size:14px;line-height:1.45;margin:0 0 10px;color:#334155}
-  .pp-cookie-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:10px}
-  .pp-btn{appearance:none;border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer}
-  .pp-btn:hover{background:#f8fafc}
-  .pp-btn-primary{background:#A4AE8F;border-color:#9aa882;color:#0f172a;font-weight:600}
-  .pp-btn-primary:hover{filter:brightness(0.98)}
-  .pp-btn-danger{background:#fff;border-color:#e2e8f0}
-  details.pp-advanced{margin-top:6px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:8px}
-  details.pp-advanced summary{cursor:pointer;list-style:none}
-  details.pp-advanced summary::-webkit-details-marker{display:none}
-  .pp-switch{display:flex;align-items:center;gap:8px;margin:6px 0}
-  .pp-switch input{width:18px;height:18px}
-  .pp-small{font-size:12px;color:#64748b;margin-top:4px}
-  @media (prefers-reduced-motion:no-preference){
-    .pp-cookie-banner{animation:pp-slide .25s ease-out}
-    @keyframes pp-slide{from{transform:translate(-50%,8px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
-  }
-</style>
-
-<script>
-/* ---------- 1) Inicializace Consent Mode: default = denied ---------- */
-window.dataLayer = window.dataLayer || [];
-function gtag(){ dataLayer.push(arguments); }
-
-/* Defaultní režim – nic neukládat, dokud neudělím souhlas */
-gtag('consent', 'default', {
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied',
-  'analytics_storage': 'denied',
-  'functionality_storage': 'granted',   // nezbytné (např. jazyk, UI)
-  'security_storage': 'granted'
-});
-
-/* Pomůcky */
-const PP_KEY = 'pp_consent_v2';
-const hasStoredConsent = () => !!localStorage.getItem(PP_KEY);
-const saveConsent = (obj) => localStorage.setItem(PP_KEY, JSON.stringify(obj));
-const readConsent = () => { try { return JSON.parse(localStorage.getItem(PP_KEY) || '{}'); } catch(e){ return {}; } };
-
-/* Načtení GA až po souhlasu (nebo když už byl dán dříve) */
-function loadGA(measurementId){
-  if (document.getElementById('pp-gtag-loader')) return; // už načteno
-  var s = document.createElement('script');
-  s.async = true;
-  s.id = 'pp-gtag-loader';
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
-  document.head.appendChild(s);
-  gtag('js', new Date());
-  gtag('config', measurementId); // základní page_view
-}
-
-/* Po načtení stránky: pokud je uložen souhlas, aplikuj ho a případně načti GA */
-document.addEventListener('DOMContentLoaded', function(){
-  const stored = readConsent();
-  if (stored && typeof stored === 'object' && Object.keys(stored).length){
-    gtag('consent', 'update', stored);
-    if (stored.analytics_storage === 'granted') {
-      loadGA('G-Q1R1G4TVZ3');
-    }
-  } else {
-    // Zobraz banner
-    document.querySelector('.pp-cookie-backdrop').style.display = 'block';
-    document.querySelector('.pp-cookie-banner').style.display = 'block';
-    // Přístupnost: fokus na první tlačítko
-    setTimeout(()=>document.getElementById('pp-accept-all')?.focus(), 0);
-  }
-});
-
-/* Obsluha tlačítek */
-function hideBanner(){
-  document.querySelector('.pp-cookie-backdrop').style.display = 'none';
-  document.querySelector('.pp-cookie-banner').style.display = 'none';
-}
-
-function acceptAll(){
-  const consent = {
-    ad_storage: 'denied',              // pokud nepoužíváš reklamy, necháme denied
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'granted',
-    functionality_storage: 'granted',
-    security_storage: 'granted'
-  };
-  gtag('consent', 'update', consent);
-  saveConsent(consent);
-  loadGA('G-Q1R1G4TVZ3');
-  hideBanner();
-}
-
-function rejectAll(){
-  const consent = {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-    functionality_storage: 'granted',
-    security_storage: 'granted'
-  };
-  gtag('consent', 'update', consent);
-  saveConsent(consent);
-  hideBanner();
-}
-
-function saveCustom(){
-  const analytics = document.getElementById('pp-ck-analytics').checked ? 'granted' : 'denied';
-  const consent = {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: analytics,
-    functionality_storage: 'granted',
-    security_storage: 'granted'
-  };
-  gtag('consent', 'update', consent);
-  saveConsent(consent);
-  if (analytics === 'granted') { loadGA('G-Q1R1G4TVZ3'); }
-  hideBanner();
-}
-
-/* Exponování pro inline onclick */
-window.ppAcceptAll = acceptAll;
-window.ppRejectAll = rejectAll;
-window.ppSaveCustom = saveCustom;
-</script>
-
-<div class="pp-cookie-backdrop" aria-hidden="true"></div>
-<div class="pp-cookie-banner" role="dialog" aria-modal="true" aria-labelledby="pp-cookie-title">
-  <h2 id="pp-cookie-title" class="pp-cookie-title">Cookies & soukromí</h2>
-  <p class="pp-cookie-text">
-    Používáme nezbytné cookies pro správné fungování webu a volitelné analytické cookies (GA4),
-    které nám pomáhají zlepšovat obsah. Analytické spouštíme jen s tvým souhlasem.
-    <span class="pp-small">Správcem je EduVentures, s.r.o. Můžeš kdykoli změnit volbu smazáním „pp_consent_v2“ v prohlížeči.</span>
-  </p>
-
-  <details class="pp-advanced">
-    <summary><strong>Vlastní nastavení</strong></summary>
-    <label class="pp-switch" for="pp-ck-necessary">
-      <input id="pp-ck-necessary" type="checkbox" checked disabled>
-      <span>Nezbytné (nutné pro chod webu)</span>
-    </label>
-    <label class="pp-switch" for="pp-ck-analytics">
-      <input id="pp-ck-analytics" type="checkbox">
-      <span>Analytické (Google Analytics 4)</span>
-    </label>
-    <p class="pp-small">Reklamní cookies nepoužíváme.</p>
-  </details>
-
-  <div class="pp-cookie-actions">
-    <button class="pp-btn pp-btn-danger" type="button" onclick="ppRejectAll()">Odmítnout</button>
-    <button class="pp-btn" type="button" onclick="document.querySelector('details.pp-advanced').open = true">Upravit</button>
-    <button id="pp-accept-all" class="pp-btn pp-btn-primary" type="button" onclick="ppAcceptAll()">Povolit vše potřebné</button>
-    <button class="pp-btn" type="button" onclick="ppSaveCustom()">Uložit nastavení</button>
-  </div>
-</div>
-<!-- ===== /Cookie lišta + Consent Mode v2 ===== -->
-
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -172,127 +9,278 @@ window.ppSaveCustom = saveCustom;
   <!-- Figtree (Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Styles -->
-<link rel="stylesheet" href="styles.css">
+  <!-- Hlavní styl -->
+  <link rel="stylesheet" href="styles.css" />
 
-<!-- Favicon: přímá RAW URL (test, že se opravdu zobrazí) -->
-<link rel="icon" type="image/png" sizes="32x32"
-      href="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapy_logo_square.png?v=3">
-<link rel="apple-touch-icon" sizes="180x180"
-      href="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapy_logo_square.png?v=3">
+  <!-- Favicony -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/PraguePsychotherapyNoText_transparent.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/PraguePsychotherapyNoText_transparent.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/PraguePsychotherapyNoText_transparent.png">
 
+  <!-- ===== Cookie lišta + Google Consent Mode v2 (CZ) – Prague Psychotherapy ===== -->
+  <style>
+    .pp-cookie-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);backdrop-filter:saturate(130%) blur(2px);display:none;z-index:9998}
+    .pp-cookie-banner{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);width:min(720px,92%);background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,.18);padding:16px 16px 12px;z-index:9999;display:none;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#0f172a}
+    .pp-cookie-title{font-size:18px;margin:0 0 6px;font-weight:700}
+    .pp-cookie-text{font-size:14px;line-height:1.45;margin:0 0 10px;color:#334155}
+    .pp-cookie-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:10px}
+    .pp-btn{appearance:none;border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer}
+    .pp-btn:hover{background:#f8fafc}
+    .pp-btn-primary{background:#A4AE8F;border-color:#9aa882;color:#0f172a;font-weight:600}
+    .pp-btn-primary:hover{filter:brightness(0.98)}
+    .pp-btn-danger{background:#fff;border-color:#e2e8f0}
+    details.pp-advanced{margin-top:6px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:8px}
+    details.pp-advanced summary{cursor:pointer;list-style:none}
+    details.pp-advanced summary::-webkit-details-marker{display:none}
+    .pp-switch{display:flex;align-items:center;gap:8px;margin:6px 0}
+    .pp-switch input{width:18px;height:18px}
+    .pp-small{font-size:12px;color:#64748b;margin-top:4px}
+    @media (prefers-reduced-motion:no-preference){
+      .pp-cookie-banner{animation:pp-slide .25s ease-out}
+      @keyframes pp-slide{from{transform:translate(-50%,8px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+    }
+  </style>
+
+  <script>
+  /* ---------- 1) Inicializace Consent Mode: default = denied ---------- */
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  /* Defaultní režim – nic neukládat, dokud neudělím souhlas */
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',   // nezbytné (např. jazyk, UI)
+    'security_storage': 'granted'
+  });
+
+  /* Pomůcky */
+  const PP_KEY = 'pp_consent_v2';
+  const hasStoredConsent = () => !!localStorage.getItem(PP_KEY);
+  const saveConsent = (obj) => localStorage.setItem(PP_KEY, JSON.stringify(obj));
+  const readConsent = () => { try { return JSON.parse(localStorage.getItem(PP_KEY) || '{}'); } catch(e){ return {}; } };
+
+  /* Načtení GA až po souhlasu (nebo když už byl dán dříve) */
+  function loadGA(measurementId){
+    if (document.getElementById('pp-gtag-loader')) return; // už načteno
+    var s = document.createElement('script');
+    s.async = true;
+    s.id = 'pp-gtag-loader';
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', measurementId); // základní page_view
+  }
+
+  /* Po načtení stránky: pokud je uložen souhlas, aplikuj ho a případně načti GA */
+  document.addEventListener('DOMContentLoaded', function(){
+    const stored = readConsent();
+    if (stored && typeof stored === 'object' && Object.keys(stored).length){
+      gtag('consent', 'update', stored);
+      if (stored.analytics_storage === 'granted') {
+        loadGA('G-Q1R1G4TVZ3');
+      }
+    } else {
+      // Zobraz banner
+      document.querySelector('.pp-cookie-backdrop').style.display = 'block';
+      document.querySelector('.pp-cookie-banner').style.display = 'block';
+      // Přístupnost: fokus na první tlačítko
+      setTimeout(()=>document.getElementById('pp-accept-all')?.focus(), 0);
+    }
+  });
+
+  /* Obsluha tlačítek */
+  function hideBanner(){
+    document.querySelector('.pp-cookie-backdrop').style.display = 'none';
+    document.querySelector('.pp-cookie-banner').style.display = 'none';
+  }
+
+  function acceptAll(){
+    const consent = {
+      ad_storage: 'denied',              // pokud nepoužíváš reklamy, necháme denied
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'granted',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    };
+    gtag('consent', 'update', consent);
+    saveConsent(consent);
+    loadGA('G-Q1R1G4TVZ3');
+    hideBanner();
+  }
+
+  function rejectAll(){
+    const consent = {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    };
+    gtag('consent', 'update', consent);
+    saveConsent(consent);
+    hideBanner();
+  }
+
+  function saveCustom(){
+    const analytics = document.getElementById('pp-ck-analytics').checked ? 'granted' : 'denied';
+    const consent = {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: analytics,
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    };
+    gtag('consent', 'update', consent);
+    saveConsent(consent);
+    if (analytics === 'granted') { loadGA('G-Q1R1G4TVZ3'); }
+    hideBanner();
+  }
+
+  /* Exponování pro inline onclick */
+  window.ppAcceptAll = acceptAll;
+  window.ppRejectAll = rejectAll;
+  window.ppSaveCustom = saveCustom;
+  </script>
+  <!-- ===== /Cookie lišta + Consent Mode v2 ===== -->
 </head>
 <body>
 
-<!-- HLAVIČKA -->
-<header class="site-header">
-  <div class="container navbar">
-    <a href="index.html" class="brand">
-      <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp" alt="Prague Psychotherapy logo">
-      <span>Prague Psychotherapy</span>
-    </a>
+  <div class="pp-cookie-backdrop" aria-hidden="true"></div>
+  <div class="pp-cookie-banner" role="dialog" aria-modal="true" aria-labelledby="pp-cookie-title">
+    <h2 id="pp-cookie-title" class="pp-cookie-title">Cookies & soukromí</h2>
+    <p class="pp-cookie-text">
+      Používáme nezbytné cookies pro správné fungování webu a volitelné analytické cookies (GA4),
+      které nám pomáhají zlepšovat obsah. Analytické spouštíme jen s tvým souhlasem.
+      <span class="pp-small">Správcem je EduVentures, s.r.o. Můžeš kdykoli změnit volbu smazáním „pp_consent_v2“ v prohlížeči.</span>
+    </p>
 
-    <!-- HAMBURGER -->
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+    <details class="pp-advanced">
+      <summary><strong>Vlastní nastavení</strong></summary>
+      <label class="pp-switch" for="pp-ck-necessary">
+        <input id="pp-ck-necessary" type="checkbox" checked disabled>
+        <span>Nezbytné (nutné pro chod webu)</span>
+      </label>
+      <label class="pp-switch" for="pp-ck-analytics">
+        <input id="pp-ck-analytics" type="checkbox">
+        <span>Analytické (Google Analytics 4)</span>
+      </label>
+      <p class="pp-small">Reklamní cookies nepoužíváme.</p>
+    </details>
 
-    <nav class="nav">
-      <a href="#onas">O nás</a>
-      <a href="#sluzby">Co nabízíme</a>
-      <a href="#kde-cena">Kde, a kolik to stojí</a>
-      <a href="#terapeuti">Naši terapeuté</a>
-      <a href="#objednat" class="btn">Chci se objednat</a>
-    </nav>
-  </div>
-</header>
-
-
-
-<!-- HERO SLIDER -->
-<div class="slider fade-slider">
-  <div class="slides">
-    <img src="https://github.com/langpaulmartin-stack/images/raw/main/anna_duta.webp" alt="Obrázek 1">
-    <img src="https://github.com/langpaulmartin-stack/images/raw/main/anna92.webp" alt="Obrázek 2">
-    <img src="https://github.com/langpaulmartin-stack/images/raw/main/interier.webp" alt="Obrázek 3">
+    <div class="pp-cookie-actions">
+      <button class="pp-btn pp-btn-danger" type="button" onclick="ppRejectAll()">Odmítnout</button>
+      <button class="pp-btn" type="button" onclick="document.querySelector('details.pp-advanced').open = true">Upravit</button>
+      <button id="pp-accept-all" class="pp-btn pp-btn-primary" type="button" onclick="ppAcceptAll()">Povolit vše potřebné</button>
+      <button class="pp-btn" type="button" onclick="ppSaveCustom()">Uložit nastavení</button>
+    </div>
   </div>
 
-  <div class="slider-overlay">
-    <h1>Prague Psychotherapy</h1>
-    <p>Individuální a párová psychoterapie v srdci Prahy</p>
-    <a href="#objednat" class="btn btn-primary">Objednat terapii</a>
+  <!-- HLAVIČKA -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/PraguePsychotherapyNoText_transparent.webp"
+             alt="Prague Psychotherapy logo">
+        <span>Prague Psychotherapy</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="nav">
+        <a href="#onas">O nás</a>
+        <a href="#sluzby">Co nabízíme</a>
+        <a href="#kde-cena">Kde, a kolik to stojí</a>
+        <a href="#terapeuti">Naši terapeuté</a>
+        <a href="#objednat" class="btn">Chci se objednat</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SLIDER -->
+  <div class="fade-slider">
+    <div class="slides">
+      <img src="https://github.com/langpaulmartin-stack/images/raw/main/anna_duta.webp" alt="Obrázek 1">
+      <img src="https://github.com/langpaulmartin-stack/images/raw/main/anna92.webp" alt="Obrázek 2">
+      <img src="https://github.com/langpaulmartin-stack/images/raw/main/interier.webp" alt="Obrázek 3">
+    </div>
+
+    <div class="slider-overlay">
+      <h1>Prague Psychotherapy</h1>
+      <p>Individuální a párová psychoterapie v srdci Prahy</p>
+      <a href="#objednat" class="btn">Objednat terapii</a>
+    </div>
   </div>
-</div>
 
-
-  <!-- HERO BOX -->
- 
-
+  <main>
     <!-- O NÁS -->
     <section id="onas" class="section about">
       <div class="container">
         <h2 class="section-title">O nás</h2>
-        
+
         <div class="grid grid-2">
           <div class="prose">
-            <p>Klientům různých věkových skupin, zemí původu pomáháme najít a rozvíjet svůj potenciál, necházíme jedinečné krásy i úskalí vlastní duše a prožívání.</p>
-              <p>Pracujeme pod odbornou supervizí a řídíme se etickým kodexem České asociace pro psychoterapii. Nabízíme bezpečný, nesoudící prostor pro vaše témata a společně hledáme změnu, která dává smysl vám i vašemu životu.</p>
-          <p class="prose">Naším zakladatelem je Martin Langpaul, psychoterapeut ve výcviku a pedagog.</p></div>
+            <p>Pracujeme pod odbornou supervizí a řídíme se etickým kodexem České asociace pro psychoterapii. Nabízíme bezpečný, nesoudící prostor pro vaše témata a společně hledáme změnu, která dává smysl vám i vašemu životu.</p>
+            <p class="section-sub">Naším zakladatelem je Martin Langpaul, psychoterapeut ve výcviku a pedagog.</p>
+          </div>
           <div class="card">
             <h3>Hodnoty</h3>
             <ul class="list">
               <li>Respekt a důvěra</li>
-              <li>Pokora vůči klientovi a jeho příběhu</li>
+              <li>Evidence-based přístupy</li>
               <li>Dlouhodobý růst a péče o vztahy</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-<!-- NAŠI TERAPEUTÉ -->
-<section id="terapeuti" class="section">
-  <div class="container">
-    <h2 class="section-title">Naši terapeuté</h2>
-    <p class="section-sub">Pracujeme pod akreditovanou supervizí a dle etického kodexu ČAP.</p>
 
-    <div class="grid grid-3">
+    <!-- NAŠI TERAPEUTÉ -->
+    <section id="terapeuti" class="section">
+      <div class="container">
+        <h2 class="section-title">Naši terapeuté</h2>
+        <p class="section-sub">Pracujeme pod supervizí a dle etického kodexu ČAP.</p>
 
-      <article class="card therapist">
-        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/martin_profile_v3.jpg"
-             alt="Profilová fotografie Mgr. Martina Langpaula">
-        <h3>Martin Langpaul</h3>
-        <p>Zakladatel, psychoterapeut ve výcviku. Individuální a párová terapie. Terapie v českém, anglickém, německém jazyce.</p>
-        <a href="martin-langpaul.html" class="btn btn-center">Další informace</a>
-      </article>
+        <div class="grid grid-3">
+          <article class="card therapist">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/martin_profile_v3.jpg"
+                 alt="Profilová fotografie Mgr. Martina Langpaula">
+            <h3>Mgr. Martin Langpaul</h3>
+            <p>Zakladatel, psychoterapeut ve výcviku. Individuální a párová terapie – česky, anglicky, německy.</p>
+            <a href="martin-langpaul.html" class="btn btn-center">Další informace</a>
+          </article>
 
-      <article class="card therapist">
-        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/bara_profile.jpg"
-             alt="Profilová fotografie Mgr. Barbory Kárníkové">
-        <h3>Barbora Kárníková</h3>
-        <p>Psychoterapeutka ve výcviku. Individuální terapie, dlouhodobá práce a podpora v náročných životních situacích.</p>
-        <a href="barbora-karnikova.html" class="btn btn-center">Další informace</a>
-      </article>
+          <article class="card therapist">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/bara_profile.jpg"
+                 alt="Profilová fotografie Mgr. Barbory Kárníkové">
+            <h3>Mgr. Barbora Kárníková</h3>
+            <p>Psychoterapeutka ve výcviku. Individuální terapie, dlouhodobá práce a podpora v náročných životních situacích.</p>
+            <a href="barbora-karnikova.html" class="btn btn-center">Další informace</a>
+          </article>
 
-      <article class="card therapist">
-        <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/jonas_profile.jpg"
-             alt="Profilová fotografie Mgr. Jonáše Herzy">
-        <h3>Jonáš Herza</h3>
-        <p>Psychoterapeut ve výcviku. Zaměřuje se na podporu při životních změnách a krizových obdobích.</p>
-        <a href="jonas-herza.html" class="btn btn-center">Další informace</a>
-      </article>
-
-    </div>
-  </div>
-</section>
-
+          <article class="card therapist">
+            <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/jonas_profile.jpg"
+                 alt="Profilová fotografie Mgr. Jonáše Herzy">
+            <h3>Mgr. Jonáš Herza</h3>
+            <p>Psychoterapeut ve výcviku. Zaměřuje se na podporu při životních změnách a krizových obdobích.</p>
+            <a href="jonas-herza.html" class="btn btn-center">Další informace</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- CO NABÍZÍME -->
     <section id="sluzby" class="section services">
       <div class="container">
         <h2 class="section-title">Co nabízíme</h2>
-        <p class="prose">V centru péče stojí klientka/klient s jeho/jejími jedinečnými potřebami a příběhem. V bezpečném prostředí nasloucháme jejich příběhům, abychom společně pracovali na zlepšení jejich duševního zdraví a kvality života. Zaměřujeme se na práci s jednotlivci i páry – osobně v Praze, nebo online.</p>
+        <p class="section-sub">Zaměřujeme se na práci s jednotlivci i páry – osobně v Praze, nebo online.</p>
         <div class="grid grid-3">
           <article class="card">
             <h3>Individuální psychoterapie</h3>
@@ -303,8 +291,8 @@ window.ppSaveCustom = saveCustom;
             <p>Zlepšení komunikace, porozumění a vztahové pohody.</p>
           </article>
           <article class="card">
-            <h3>Terapie v cizím jazyce</h3>
-            <p>Nabízíme terapii v českém, anglickém a německém jazyce.</p>
+            <h3>Jazyky</h3>
+            <p>Čeština • English • Deutsch (osobně i online).</p>
           </article>
         </div>
       </div>
@@ -321,89 +309,85 @@ window.ppSaveCustom = saveCustom;
             <div class="price">od 1000 Kč / 50 min</div>
             <ul class="features">
               <li>Bezpečný prostor</li>
-              <li>Psychodynamický přístup, nebo gestalt terapie</li>
+              <li>Evidence-based přístup</li>
               <li>Osobně i online</li>
             </ul>
           </div>
           <div class="card">
             <h3>Párová psychoterapie</h3>
-            <div class="price">1500 Kč / 75 min</div>
+            <div class="price">1750 Kč / 75 min</div>
             <ul class="features">
-              <li>Hlubinný psychodynamický přístup</li>
-              <li>Zlepšení vzájemného porozumění</li>
-              <li>Práce s kontextem zázemí členů páru</li>
+              <li>Vztahová diagnostika</li>
+              <li>Komunikační dovednosti</li>
+              <li>Porozumění, vyslyšení</li>
             </ul>
           </div>
         </div>
-
-     
+      </div>
     </section>
 
-<!-- CHCI SE OBJEDNAT -->
-<section id="objednat" class="section bg-surface">
-  <div class="container">
-    <h2 class="section-title">Chci se objednat na terapii</h2>
-    <p class="prose">Vyplňte prosím údaje. Ozveme se vám a domluvíme termín osobní nebo online schůzky.</p>
-    
-    <form action="https://formspree.io/f/mjkepbpe" method="POST">
-      <!-- Honeypot proti spamu (lidi to nevidí) -->
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-    
-      <div class="form-grid">
-        <div>
-          <label class="label" for="name">Jméno a příjmení</label>
-          <input class="input" id="name" name="name" type="text" required />
-        </div>
-        <div>
-          <label class="label" for="email">E-mailová adresa</label>
-          <input class="input" id="email" name="email" type="email" required />
-        </div>
+    <!-- CHCI SE OBJEDNAT -->
+    <section id="objednat" class="section bg-surface">
+      <div class="container">
+        <h2 class="section-title">Chci se objednat na terapii</h2>
+        <p class="section-sub">Vyplňte prosím údaje. Ozveme se vám a domluvíme termín osobní nebo online schůzky.</p>
+
+        <form action="https://formspree.io/f/mjkepbpe" method="POST">
+          <!-- Honeypot proti spamu (lidi to nevidí) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="form-grid">
+            <div>
+              <label class="label" for="name">Jméno a příjmení</label>
+              <input class="input" id="name" name="name" type="text" required />
+            </div>
+            <div>
+              <label class="label" for="email">E-mailová adresa</label>
+              <input class="input" id="email" name="email" type="email" required />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div>
+              <label class="label" for="phone">Telefonní číslo</label>
+              <input class="input" id="phone" name="phone" type="tel" />
+            </div>
+            <div>
+              <label class="label" for="service">Vyber terapii</label>
+              <select class="select" id="service" name="service">
+                <option>Individuální psychoterapie</option>
+                <option>Párová psychoterapie</option>
+                <option>Individual psychotherapy (English)</option>
+                <option>Individuelle Psychotherapie (Deutsch)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- nový výběr terapeuta -->
+          <div>
+            <label class="label" for="therapist">Vyberte terapeuta</label>
+            <select class="select" id="therapist" name="therapist">
+              <option>Mgr. Martin Langpaul</option>
+              <option>Mgr. Barbora Kárníková</option>
+              <option>Mgr. Jonáš Herza</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="label" for="message">Zpráva</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Můžete stručně popsat, s čím potřebujete pomoci…"></textarea>
+          </div>
+
+          <button class="btn" type="submit">Odeslat</button>
+          <p class="form-note">Vyplněním formuláře souhlasíte se zpracováním osobních údajů pro účely zpětného kontaktu.</p>
+        </form>
       </div>
-    
-      <div class="form-grid">
-        <div>
-          <label class="label" for="phone">Telefonní číslo</label>
-          <input class="input" id="phone" name="phone" type="tel" />
-        </div>
-        <div>
-          <label class="label" for="service">Vyber terapii</label>
-          <select class="select" id="service" name="service">
-            <option>Individuální psychoterapie</option>
-            <option>Párová psychoterapie</option>
-            <option>Individual psychotherapy - Martin Langpaul (English)</option>
-            <option>Individuelle Psychotherapie - Martin Langpaul (Deutsch)</option>
-          </select>
-        </div>
-      </div>
+    </section>
 
-      <!-- nový výběr terapeuta -->
-      <div>
-        <label class="label" for="therapist">Vyberte terapeuta</label>
-        <select class="select" id="therapist" name="therapist">
-          <option>Martin Langpaul</option>
-          <option>Barbora Kárníková</option>
-          <option>Jonáš Herza</option>
-        </select>
-      </div>
-    
-      <div>
-        <label class="label" for="message">Zpráva</label>
-        <textarea class="textarea" id="message" name="message" placeholder="Můžete stručně popsat, s čím potřebujete pomoci…"></textarea>
-      </div>
+    <div class="surface" style="margin-top:16px">
+      <strong>Adresa:</strong> Bořivojova 17, 130 00 Praha 3. <a href="#objednat">Chci se objednat</a>
+    </div>
 
-      <button class="btn" type="submit">Odeslat</button>
-      <p class="form-note">Vyplněním formuláře souhlasíte se zpracováním osobních údajů pro účely zpětného kontaktu.</p>
-    </form>
-  </div>
-</section>
-
-
-  <div class="surface address-box">
-  <strong>Adresa:</strong> Bořivojova 17, 130 00 Praha 3. 
-  <a href="#objednat">Chci se objednat</a>
-</div>
-
-    
     <div class="map-embed">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40960.328783910765!2d14.380315250401443!3d50.085902133400594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa9afb702b1269a69%3A0xc4e36c05427059b4!2sPrague%20Psychotherapy%20l%20Martin%20Langpaul!5e0!3m2!1sen!2scz!4v1757080357230!5m2!1sen!2scz"
@@ -413,78 +397,67 @@ window.ppSaveCustom = saveCustom;
         aria-label="Mapa: Bořivojova 17, Praha 3">
       </iframe>
     </div>
-    
+
     <section id="informace" class="section">
       <div class="container">
         <h2 class="section-title">Další informace</h2>
-    
+
         <div class="grid grid-3">
-    
+
           <article class="card">
-  <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/anna-painting-1-small.webp" 
-       alt="Obrázek – Etická pravidla">
-  <h3>Etická pravidla</h3>
-  <p>Řídíme se etickým kodexem České asociace pro psychoterapii. 
-     S každým klientem/klientkou je při úvodním sezení podepsána dohoda o psychoterapii, 
-     která ošetřuje všechny aspekty psychoterapeutického vztahu. 
-     Pracujeme pod pravidelnou akreditovanou supervizí.</p>
-</article>
+            <img src="https://picsum.photos/400?random=11" alt="Placeholder obrázek – Etická pravidla">
+            <h3>Etická pravidla</h3>
+            <p>Řídím se etickým kodexem České asociace pro psychoterapii.
+               S každým klientem/klientkou je při úvodním sezení podepsána dohoda o psychoterapii,
+               která ošetřuje všechny aspekty psychoterapeutického vztahu.
+               Pracuji pod pravidelnou akreditovanou supervizí.</p>
+          </article>
 
-<article class="card">
-  <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/anna-painting-2-small.webp" 
-       alt="Obrázek – Poslání a hodnoty">
-  <h3>Poslání a hodnoty</h3>
-  <p>Klientům různých věkových skupin, zemí původu pomáháme najít a rozvíjet svůj potenciál, 
-     nacházíme jedinečné krásy i úskalí vlastní duše a prožívání.</p>
-  <p>V centru péče stojí klientka/klient s jeho/jejími jedinečnými potřebami a příběhem. 
-     V bezpečném prostředí nasloucháme jejich příběhům, 
-     abychom společně pracovali na zlepšení jejich duševního zdraví a kvality života.</p>
-</article>
+          <article class="card">
+            <img src="https://picsum.photos/400?random=12" alt="Placeholder obrázek – Poslání a hodnoty">
+            <h3>Prague Psychotherapy – Poslání a hodnoty</h3>
+            <p>Klientům různých věkových skupin, zemí původu pomáhám najít a rozvíjet svůj potenciál,
+               nacházíme jedinečné krásy i úskalí vlastní duše a prožívání.</p>
+            <p>V centru péče stojí klientka/klient s jeho/jejími jedinečnými potřebami a příběhem.
+               V bezpečném prostředí naslouchám jejich příběhům,
+               abychom společně pracovali na zlepšení jejich duševního zdraví a kvality života.</p>
+          </article>
 
-<article class="card">
-  <img src="https://raw.githubusercontent.com/langpaulmartin-stack/images/main/anna-painting-3-small.webp" 
-       alt="Obrázek – Osobní údaje">
-  <h3>Zásady zpracování osobních údajů</h3>
-  <p>V rámci psychoterapeutického vztahu je zachovávána naprostá diskrétnost. 
-     Žádné osobní údaje nejsou předávány třetí straně. 
-     Veškerá zpracování osobních údajů se řídí etickým kodexem České asociace pro psychoterapii 
-     a Zásadami zpracování osobních údajů.</p>
-</article>
+          <article class="card">
+            <img src="https://picsum.photos/400?random=13" alt="Placeholder obrázek – Osobní údaje">
+            <h3>Zásady zpracování osobních údajů</h3>
+            <p>V rámci psychoterapeutického vztahu je zachovávána naprostá diskrétnost.
+               Žádné osobní údaje nejsou předávány třetí straně.
+               Veškerá zpracování osobních údajů se řídí etickým kodexem České asociace pro psychoterapii
+               a Zásadami zpracování osobních údajů.</p>
+          </article>
 
-    
         </div>
       </div>
     </section>
-    
   </main>
 
   <!-- PATIČKA -->
-<!-- PATIČKA -->
-<footer class="site-footer">
-  <div class="container cols">
-    <div>© <span id="year"></span> Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
-    <div><a href="#objednat">Objednat</a></div>
-    <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
-  </div>
-</footer>
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>© 2025 Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
+      <div><a href="#objednat">Objednat</a></div>
+      <div><a href="#">Zásady ochrany osobních údajů</a></div>
+    </div>
+  </footer>
 
-<script>
-  // vloží aktuální rok do patičky
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-<script>
+  <script>
     (function(){
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.querySelector('.nav');
       if (!toggle || !nav) return;
-  
+
       toggle.addEventListener('click', () => {
         const open = toggle.classList.toggle('is-open');
         nav.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-  
+
       // Volitelně: zavřít po kliknutí na odkaz
       nav.addEventListener('click', e => {
         if (e.target.matches('a')) {
