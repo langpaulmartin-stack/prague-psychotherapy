@@ -438,13 +438,15 @@
   </main>
 
   <!-- PATIČKA -->
-  <footer class="site-footer">
-    <div class="container cols">
-      <div>© 2025 Prague Psychotherapy - Martin Langpaul • Bořivojova 17, 130 00 Praha 3</div>
-      <div><a href="#objednat">Objednat</a></div>
-      <div><a href="#">Zásady ochrany osobních údajů</a></div>
+<footer class="site-footer">
+  <div class="container cols">
+    <div>
+      © <span id="current-year"></span> Prague Psychotherapy – Martin Langpaul • Bořivojova 17, 130 00 Praha 3
     </div>
-  </footer>
+    <div><a href="#objednat">Objednat</a></div>
+    <div><a href="#">Zásady ochrany osobních údajů</a></div>
+  </div>
+</footer>
 
   <script>
     (function(){
@@ -468,5 +470,9 @@
       });
     })();
   </script>
+  <script>
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
