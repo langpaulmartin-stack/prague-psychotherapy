@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prague Psychotherapy – O nás, služby, ceník a objednávka</title>
-  <meta name="description" content="Individuální a párová psychoterapie v Praze. Bezpečný prostor, přístup na důkazech, objednávka online. Bořivojova 17, Praha 3." />
+  <title>Prague Psychotherapy – Psychotherapy in Prague 3</title>
+  <meta name="description" content="Individual and couples psychotherapy in Prague 3. Safe, respectful space, evidence‑informed approach, online booking. Bořivojova 17, Prague 3." />
 
   <!-- Figtree (Google Fonts) -->
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="images/PraguePsychotherapy_logo_square.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/PraguePsychotherapy_logo_square.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/PraguePsychotherapy_logo_square.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/PraguePsychotherapy_logo_square.png">
 
   <!-- Hlavní styl -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../styles.css" />
 
   <!-- ===== Cookie lišta + Google Consent Mode v2 (CZ) – Prague Psychotherapy ===== -->
   <style>
@@ -150,58 +150,58 @@
 
   <div class="pp-cookie-backdrop" aria-hidden="true"></div>
   <div class="pp-cookie-banner" role="dialog" aria-modal="true" aria-labelledby="pp-cookie-title">
-    <h2 id="pp-cookie-title" class="pp-cookie-title">Cookies & soukromí</h2>
+    <h2 id="pp-cookie-title" class="pp-cookie-title">Cookies & Privacy</h2>
     <p class="pp-cookie-text">
-      Používáme nezbytné cookies pro správné fungování webu a volitelné analytické cookies (GA4),
-      které nám pomáhají zlepšovat obsah. Analytické spouštíme jen s tvým souhlasem.
-      <span class="pp-small">Správcem je EduVentures, s.r.o. Můžeš kdykoli změnit volbu smazáním „pp_consent_v2“ v prohlížeči.</span>
+      We use essential cookies for the website to work properly and optional analytics cookies (GA4)
+      to help us improve content. Analytics are enabled only with your consent.
+      <span class="pp-small">Controller: EduVentures, s.r.o. You can change your choice anytime by deleting “pp_consent_v2” in your browser.</span>
     </p>
 
     <details class="pp-advanced">
-      <summary><strong>Vlastní nastavení</strong></summary>
+      <summary><strong>Custom settings</strong></summary>
       <label class="pp-switch" for="pp-ck-necessary">
         <input id="pp-ck-necessary" type="checkbox" checked disabled>
-        <span>Nezbytné (nutné pro chod webu)</span>
+      <span>Essential (required for the site)</span>
       </label>
       <label class="pp-switch" for="pp-ck-analytics">
         <input id="pp-ck-analytics" type="checkbox">
-        <span>Analytické (Google Analytics 4)</span>
+      <span>Analytics (Google Analytics 4)</span>
       </label>
-      <p class="pp-small">Reklamní cookies nepoužíváme.</p>
+    <p class="pp-small">We do not use advertising cookies.</p>
     </details>
 
     <div class="pp-cookie-actions">
-      <button class="pp-btn pp-btn-danger" type="button" onclick="ppRejectAll()">Odmítnout</button>
-      <button class="pp-btn" type="button" onclick="document.querySelector('details.pp-advanced').open = true">Upravit</button>
-      <button id="pp-accept-all" class="pp-btn pp-btn-primary" type="button" onclick="ppAcceptAll()">Povolit vše potřebné</button>
-      <button class="pp-btn" type="button" onclick="ppSaveCustom()">Uložit nastavení</button>
+      <button class="pp-btn pp-btn-danger" type="button" onclick="ppRejectAll()">Reject</button>
+      <button class="pp-btn" type="button" onclick="document.querySelector('details.pp-advanced').open = true">Customize</button>
+      <button id="pp-accept-all" class="pp-btn pp-btn-primary" type="button" onclick="ppAcceptAll()">Accept essential</button>
+      <button class="pp-btn" type="button" onclick="ppSaveCustom()">Save settings</button>
     </div>
   </div>
 
-  <!-- HLAVIČKA -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container navbar">
       <a href="index.html" class="brand">
-        <img src="images/PraguePsychotherapyNoText_transparent.png"
+        <img src="../images/PraguePsychotherapyNoText_transparent.png"
              alt="Prague Psychotherapy logo">
         <span>Prague Psychotherapy</span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="Otevřít menu" aria-expanded="false">
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="nav">
-        <a href="#onas">O nás</a>
-        <a href="#sluzby">Co nabízíme</a>
-        <a href="#kde-cena">Kde, a kolik to stojí</a>
-        <a href="#terapeuti">Naši terapeuté</a>
-        <a href="#objednat" class="btn">Chci se objednat</a>
+        <a href="#onas">About</a>
+        <a href="#sluzby">Services</a>
+        <a href="#kde-cena">Location & Prices</a>
+        <a href="#terapeuti">Therapists</a>
+        <a href="#objednat" class="btn">Book a Session</a>
         <div class="lang-switch">
-          <button class="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">CZ</button>
+          <button class="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">EN</button>
           <div class="lang-menu" role="listbox">
-            <a href="index.html" role="option" aria-current="true">CZ</a>
-            <a href="en/index.html" role="option" aria-current="false">EN</a>
+            <a href="../index.html" role="option" aria-current="false">CZ</a>
+            <a href="en/index.html" role="option" aria-current="true">EN</a>
           </div>
         </div>
       </nav>
@@ -211,166 +211,166 @@
   <!-- HERO SLIDER -->
   <div class="fade-slider">
     <div class="slides">
-      <img src="https://github.com/langpaulmartin-stack/images/raw/main/anna_duta.webp" alt="Obrázek 1">
-      <img src="https://github.com/langpaulmartin-stack/images/raw/main/anna92.webp" alt="Obrázek 2">
-      <img src="images/Anna_dutajehla1.webp" alt="Obrázek 3">
+      <img src="../images/anna_duta.webp" alt="Psychotherapy in Prague 3 – welcoming space">
+      <img src="../images/anna92.webp" alt="Psychotherapy in Prague 3 – calm therapy room">
+      <img src="../images/Anna_dutajehla1.webp" alt="Psychotherapy in Prague 3 – interior">
     </div>
 
     <div class="slider-overlay">
       <h1>Prague Psychotherapy</h1>
-      <p>Individuální a párová psychoterapie v srdci Prahy</p>
-      <a href="#objednat" class="btn">Objednat terapii</a>
+      <p>Individual and couples psychotherapy in Prague 3, in the heart of Prague.</p>
+      <a href="#objednat" class="btn">Book a Session</a>
     </div>
   </div>
 
   <main>
-    <!-- O NÁS -->
+    <!-- ABOUT -->
     <section id="onas" class="section about">
       <div class="container">
-        <h2 class="section-title">O nás</h2>
+        <h2 class="section-title">About</h2>
 
         <div class="grid grid-2">
           <div class="prose">
-            <p>Pracujeme pod odbornou supervizí a řídíme se etickým kodexem České asociace pro psychoterapii. Nabízíme bezpečný, nesoudící prostor pro vaše témata a společně hledáme změnu, která dává smysl vám i vašemu životu.</p>
-            <p class="section-sub">Naším zakladatelem je Martin Langpaul, psychoterapeut ve výcviku a pedagog.</p>
+            <p>We work under professional supervision and follow the ethical code of the Czech Association for Psychotherapy. We offer a safe, non‑judgmental space for your topics and look for changes that make sense for you and your life.</p>
+            <p class="section-sub">Founded by Martin Langpaul, psychotherapist in training and educator.</p>
           </div>
           <div class="card">
-            <h3>Hodnoty</h3>
+            <h3>Values</h3>
             <ul class="list">
-              <li>Respekt, důvěra a bezpečné prostředí</li>
-              <li>Psychodynamický nebo gestalt přístup</li>
-              <li>Dlouhodobý růst, sebepéče i seberozvoj</li>
+              <li>Respect, trust, and a safe environment</li>
+              <li>Psychodynamic approach</li>
+              <li>Long‑term growth, self‑care, and personal development</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- NAŠI TERAPEUTÉ -->
+    <!-- THERAPISTS -->
     <section id="terapeuti" class="section">
       <div class="container">
-        <h2 class="section-title">Naši terapeuté</h2>
-        <p class="section-sub">Pracujeme pod supervizí a dle etického kodexu ČAP.</p>
+        <h2 class="section-title">Our Therapists</h2>
+        <p class="section-sub">We work under supervision and follow the ethical code of ČAP.</p>
 
         <div class="grid grid-3">
           <article class="card therapist">
-            <img src="images/martin_langpaul_600x600.webp"
-                 alt="Profilová fotografie Mgr. Martina Langpaula">
+            <img src="../images/martin_langpaul_600x600.webp"
+                 alt="Profile photo of Martin Langpaul">
             <h3>Martin Langpaul</h3>
-            <p>Zakladatel, psychoterapeut ve výcviku. Individuální a párová terapie – česky, anglicky, německy.</p>
-            <a href="martin-langpaul.html" class="btn btn-center">Další informace</a>
+            <p>Founder, psychotherapist in training. Individual and couples therapy — Czech, English, German.</p>
+            <a href="martin-langpaul.html" class="btn btn-center">More info</a>
           </article>
 
           <article class="card therapist">
-            <img src="images/bara_profile.jpg"
-                 alt="Profilová fotografie Mgr. Barbory Kárníkové">
+            <img src="../images/bara_profile.jpg"
+                 alt="Profile photo of Barbora Kárníková">
             <h3>Barbora Kárníková</h3>
-            <p>Psychoterapeutka ve výcviku. Individuální terapie, dlouhodobá práce a podpora v náročných životních situacích.</p>
-            <a href="barbora-karnikova.html" class="btn btn-center">Další informace</a>
+            <p>Psychotherapist in training. Individual therapy, long‑term work, and support in difficult life situations.</p>
+            <a href="barbora-karnikova.html" class="btn btn-center">More info</a>
           </article>
 
           <article class="card therapist">
-            <img src="images/jonas_profile.jpg"
-                 alt="Profilová fotografie Mgr. Jonáše Herzy">
+            <img src="../images/jonas_profile.jpg"
+                 alt="Profile photo of Jonáš Herza">
             <h3>Jonáš Herza</h3>
-            <p>Psychoterapeut ve výcviku. Zaměřuje se na podporu při životních změnách a krizových obdobích.</p>
-            <a href="jonas-herza.html" class="btn btn-center">Další informace</a>
+            <p>Psychotherapist in training. Focused on support during life changes and crisis periods.</p>
+            <a href="jonas-herza.html" class="btn btn-center">More info</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- CO NABÍZÍME -->
+    <!-- SERVICES -->
     <section id="sluzby" class="section services">
       <div class="container">
-        <h2 class="section-title">Co nabízíme</h2>
-        <p class="section-sub">Zaměřujeme se na práci s jednotlivci i páry – osobně v Praze, nebo online.</p>
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-sub">We work with individuals and couples — in person in Prague or online.</p>
         <div class="grid grid-3">
           <article class="card">
-            <h3>Individuální psychoterapie</h3>
-            <p>Osobní růst, práce s úzkostí, stresem, náladou i životními změnami.</p>
+            <h3>Individual Psychotherapy</h3>
+            <p>Personal growth, work with anxiety, stress, mood, and life changes.</p>
           </article>
           <article class="card">
-            <h3>Párová psychoterapie</h3>
-            <p>Zlepšení komunikace, porozumění a vztahové pohody.</p>
+            <h3>Couples Psychotherapy</h3>
+            <p>Improving communication, understanding, and relationship wellbeing.</p>
           </article>
           <article class="card">
-            <h3>Jazyky</h3>
-            <p>Čeština • English • Deutsch (osobně i online).</p>
+            <h3>Languages</h3>
+            <p>Czech • English • German (in person and online).</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- KDE, A KOLIK TO STOJÍ -->
+    <!-- LOCATION & PRICES -->
     <section id="kde-cena" class="section pricing">
       <div class="container">
-        <h2 class="section-title">Kde, a kolik to stojí</h2>
-        <p class="section-sub">Osobní sezení probíhají v Bořivojově ulici 17, Praha 3. Nabízíme také online konzultace.</p>
+        <h2 class="section-title">Location & Prices</h2>
+        <p class="section-sub">In‑person sessions take place at Bořivojova 17, Prague 3. Online sessions are also available.</p>
         <div class="grid grid-2">
           <div class="card">
-            <h3>Individuální psychoterapie</h3>
-            <div class="price">od 1000 Kč / 50 min</div>
+            <h3>Individual Psychotherapy</h3>
+            <div class="price">from 1,000 CZK / 50 min</div>
             <ul class="features">
-              <li>Bezpečný prostor</li>
-              <li>Evidence-based přístup</li>
-              <li>Osobně i online</li>
+              <li>Safe space</li>
+              <li>Evidence‑informed approach</li>
+              <li>In person and online</li>
             </ul>
           </div>
           <div class="card">
-            <h3>Párová psychoterapie</h3>
-            <div class="price">1750 Kč / 75 min</div>
+            <h3>Couples Psychotherapy</h3>
+            <div class="price">1,750 CZK / 75 min</div>
             <ul class="features">
-              <li>Vztahová diagnostika</li>
-              <li>Komunikační dovednosti</li>
-              <li>Porozumění, vyslyšení</li>
+              <li>Relationship assessment</li>
+              <li>Communication skills</li>
+              <li>Understanding and being heard</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CHCI SE OBJEDNAT -->
+    <!-- BOOKING -->
     <section id="objednat" class="section bg-surface">
       <div class="container">
-        <h2 class="section-title">Chci se objednat na terapii</h2>
-        <p class="section-sub">Vyplňte prosím údaje. Ozveme se vám a domluvíme termín osobní nebo online schůzky.</p>
+        <h2 class="section-title">Book a Session</h2>
+        <p class="section-sub">Please fill in your details. We will get back to you and arrange an in‑person or online appointment.</p>
 
         <form action="https://formspree.io/f/mjkepbpe" method="POST">
-          <!-- Honeypot proti spamu (lidi to nevidí) -->
+          <!-- Honeypot against spam (hidden for users) -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="form-grid">
             <div>
-              <label class="label" for="name">Jméno a příjmení</label>
+              <label class="label" for="name">Full name</label>
               <input class="input" id="name" name="name" type="text" required />
             </div>
             <div>
-              <label class="label" for="email">E-mailová adresa</label>
+              <label class="label" for="email">Email address</label>
               <input class="input" id="email" name="email" type="email" required />
             </div>
           </div>
 
           <div class="form-grid">
             <div>
-              <label class="label" for="phone">Telefonní číslo</label>
+              <label class="label" for="phone">Phone number</label>
               <input class="input" id="phone" name="phone" type="tel" />
             </div>
             <div>
-              <label class="label" for="service">Vyber terapii</label>
+              <label class="label" for="service">Select a service</label>
               <select class="select" id="service" name="service">
-                <option>Individuální psychoterapie</option>
-                <option>Párová psychoterapie</option>
-                <option>Muzikoterapie</option>
-                <option>Individual psychotherapy (English)</option>
-                <option>Individuelle Psychotherapie (Deutsch)</option>
+                <option>Individual psychotherapy</option>
+                <option>Couples psychotherapy</option>
+                <option>Music therapy</option>
+                <option>Individual psychotherapy (Czech)</option>
+                <option>Individual psychotherapy (German)</option>
               </select>
             </div>
           </div>
 
-          <!-- nový výběr terapeuta -->
+          <!-- therapist selection -->
           <div>
-            <label class="label" for="therapist">Vyberte terapeuta</label>
+            <label class="label" for="therapist">Choose a therapist</label>
             <select class="select" id="therapist" name="therapist">
               <option>Martin Langpaul</option>
               <option>Barbora Kárníková</option>
@@ -379,18 +379,18 @@
           </div>
 
           <div>
-            <label class="label" for="message">Zpráva</label>
-            <textarea class="textarea" id="message" name="message" placeholder="Můžete stručně popsat, s čím potřebujete pomoci…"></textarea>
+            <label class="label" for="message">Message</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Briefly describe what you need help with…"></textarea>
           </div>
 
-          <button class="btn" type="submit">Odeslat</button>
-          <p class="form-note">Vyplněním formuláře souhlasíte se zpracováním osobních údajů. <a href="zasady.html">Přečtěte si zásady ochrany osobních údajů</a>.</p>
+          <button class="btn" type="submit">Send</button>
+          <p class="form-note">By submitting the form you agree to the processing of personal data. <a href="zasady.html">Read our Privacy Policy</a>.</p>
         </form>
       </div>
     </section>
 
     <div class="surface" style="margin-top:16px">
-      <strong>Adresa:</strong> Bořivojova 17, 130 00 Praha 3. <a href="#objednat">Chci se objednat</a>
+      <strong>Address:</strong> Bořivojova 17, 130 00 Prague 3. <a href="#objednat">Book a session</a>
     </div>
 
     <div class="map-embed">
@@ -399,42 +399,39 @@
         loading="lazy"
         allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
-        aria-label="Mapa: Bořivojova 17, Praha 3">
+        aria-label="Map: Bořivojova 17, Prague 3">
       </iframe>
     </div>
 
     <section id="informace" class="section">
       <div class="container">
-        <h2 class="section-title">Další informace</h2>
+        <h2 class="section-title">Additional Information</h2>
 
         <div class="grid grid-3">
 
           <article class="card">
-            <img src="https://picsum.photos/400?random=11" alt="Placeholder obrázek – Etická pravidla">
-            <h3>Etická pravidla</h3>
-            <p>Řídím se etickým kodexem České asociace pro psychoterapii.
-               S každým klientem/klientkou je při úvodním sezení podepsána dohoda o psychoterapii,
-               která ošetřuje všechny aspekty psychoterapeutického vztahu.
-               Pracuji pod pravidelnou akreditovanou supervizí.</p>
+            <img src="../images/sochy.webp" alt="Ethical standards and safe therapeutic space">
+            <h3>Ethical Standards</h3>
+            <p>I follow the ethical code of the Czech Association for Psychotherapy.
+               At the first session we sign a psychotherapy agreement that defines all aspects of the therapeutic relationship.
+               I work under regular accredited supervision.</p>
           </article>
 
           <article class="card">
-            <img src="https://picsum.photos/400?random=12" alt="Placeholder obrázek – Poslání a hodnoty">
-            <h3>Prague Psychotherapy – Poslání a hodnoty</h3>
-            <p>Klientům různých věkových skupin, zemí původu pomáhám najít a rozvíjet svůj potenciál,
-               nacházíme jedinečné krásy i úskalí vlastní duše a prožívání.</p>
-            <p>V centru péče stojí klientka/klient s jeho/jejími jedinečnými potřebami a příběhem.
-               V bezpečném prostředí naslouchám jejich příběhům,
-               abychom společně pracovali na zlepšení jejich duševního zdraví a kvality života.</p>
+            <img src="../images/interier.webp" alt="Prague Psychotherapy – mission and values">
+            <h3>Prague Psychotherapy – Mission & Values</h3>
+            <p>I help clients of different ages and backgrounds find and develop their potential,
+               exploring both the strengths and challenges of inner experience.</p>
+            <p>Care is centered on each client’s unique needs and story.
+               In a safe environment I listen and we work together to improve mental health and quality of life.</p>
           </article>
 
           <article class="card">
-            <img src="https://picsum.photos/400?random=13" alt="Placeholder obrázek – Osobní údaje">
-            <h3>Zásady zpracování osobních údajů</h3>
-            <p>V rámci psychoterapeutického vztahu je zachovávána naprostá diskrétnost.
-               Žádné osobní údaje nejsou předávány třetí straně.
-               Veškerá zpracování osobních údajů se řídí etickým kodexem České asociace pro psychoterapii
-               a Zásadami zpracování osobních údajů.</p>
+            <img src="../images/PraguePsychotherapyNoText_transparent.png" alt="Privacy and data protection">
+            <h3>Privacy Policy</h3>
+            <p>Therapeutic work is strictly confidential.
+               No personal data are shared with third parties.
+               All processing follows the ethical code and our privacy policy.</p>
           </article>
 
         </div>
@@ -442,14 +439,14 @@
     </section>
   </main>
 
-  <!-- PATIČKA -->
+  <!-- FOOTER -->
 <footer class="site-footer">
   <div class="container cols">
     <div>
-      © <span id="current-year"></span> Prague Psychotherapy – Martin Langpaul • Bořivojova 17, 130 00 Praha 3
+      © <span id="current-year"></span> Prague Psychotherapy – Martin Langpaul • Bořivojova 17, 130 00 Prague 3
     </div>
-    <div><a href="#objednat">Objednat</a></div>
-    <div><a href="zasady.html">Zásady ochrany osobních údajů</a></div>
+    <div><a href="#objednat">Book a session</a></div>
+    <div><a href="zasady.html">Privacy policy</a></div>
   </div>
 </footer>
 
@@ -478,6 +475,7 @@
   <script>
   document.getElementById("current-year").textContent = new Date().getFullYear();
 </script>
+
 
   <script>
     (function(){

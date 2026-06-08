@@ -60,7 +60,14 @@
           <a href="#metoda">Jak pracujeme</a>
           <a href="#reference">Reference</a>
           <a href="#kontakt" class="btn">Objednat konzultaci</a>
-        </nav>
+        <div class="lang-switch">
+          <button class="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">CZ</button>
+          <div class="lang-menu" role="listbox">
+            <a href="test.html" role="option" aria-current="true">CZ</a>
+            <a href="en/index.html" role="option" aria-current="false">EN</a>
+          </div>
+        </div>
+      </nav>
       </div>
     </header>
 
@@ -499,6 +506,39 @@
   <script>
   document.getElementById("current-year").textContent = new Date().getFullYear();
 </script>
+
+
+  <script>
+    (function(){
+      const switches = document.querySelectorAll('.lang-switch');
+      if (!switches.length) return;
+
+      function closeAll(){
+        switches.forEach(sw => {
+          sw.classList.remove('is-open');
+          const btn = sw.querySelector('.lang-toggle');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      switches.forEach(sw => {
+        const btn = sw.querySelector('.lang-toggle');
+        if (!btn) return;
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const open = !sw.classList.contains('is-open');
+          closeAll();
+          sw.classList.toggle('is-open', open);
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
+
+      document.addEventListener('click', closeAll);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+      });
+    })();
+  </script>
 
 </body>
 </html>

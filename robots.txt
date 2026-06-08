@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /thank-you.html
 Disallow: /test.html
 Sitemap: https://www.praguepsychotherapy.com/sitemap.xml
