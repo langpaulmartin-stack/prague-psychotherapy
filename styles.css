@@ -191,11 +191,12 @@ a:hover{text-decoration:underline}
 .card h3{margin:.2rem 0 .5rem;font-size:1.12rem}
 .card p{margin:0;color:var(--muted)}
 
-/* Therapist card images: keep consistent square crop */
+/* Therapist card images: keep consistent portrait crop with head and space above */
 .card.therapist img{
   width:100%;
-  aspect-ratio:1/1;
+  aspect-ratio:3/4;
   object-fit:cover;
+  object-position:center 20%;
   height:auto;
   border-radius:8px;
 }

@@ -276,6 +276,14 @@
             <p>Psychotherapist in training. Focused on support during life changes and crisis periods.</p>
             <a href="jonas-herza.html" class="btn btn-center">More info</a>
           </article>
+
+          <article class="card therapist">
+            <img src="../images/Adam_Schmidt.jpg"
+                 alt="Profile photo of Adam Schmidt">
+            <h3>Adam Schmidt</h3>
+            <p>Psychotherapist in training. Depth-oriented psychotherapy, working with individuals, couples and families.</p>
+            <a href="adam-schmidt.html" class="btn btn-center">More info</a>
+          </article>
         </div>
       </div>
     </section>
@@ -319,7 +327,7 @@
           </div>
           <div class="card">
             <h3>Couples Psychotherapy</h3>
-            <div class="price">1,750 CZK / 75 min</div>
+            <div class="price">from 1,750 CZK / 75 min</div>
             <ul class="features">
               <li>Relationship assessment</li>
               <li>Communication skills</li>
@@ -333,8 +341,9 @@
     <!-- BOOKING -->
     <section id="objednat" class="section bg-surface">
       <div class="container">
-        <h2 class="section-title">Book a Session</h2>
-        <p class="section-sub">Please fill in your details. We will get back to you and arrange an in‑person or online appointment.</p>
+        <h2 id="booking-title" class="section-title">Book a Session</h2>
+        <p id="booking-subtitle" class="section-sub">Please fill in your details. We will get back to you and arrange an in‑person or online appointment.</p>
+        <div id="therapist-pricing" class="therapist-pricing"></div>
 
         <form action="https://formspree.io/f/mjkepbpe" method="POST">
           <!-- Honeypot against spam (hidden for users) -->
@@ -375,6 +384,7 @@
               <option>Martin Langpaul</option>
               <option>Barbora Kárníková</option>
               <option>Jonáš Herza</option>
+              <option>Adam Schmidt</option>
             </select>
           </div>
 
@@ -470,6 +480,49 @@
           toggle.setAttribute('aria-expanded', 'false');
         }
       });
+    })();
+  </script>
+  <script>
+    (function(){
+      const therapistPricing = {
+        "Martin Langpaul": [
+          { label: "Individual psychotherapy", price: "1,300 CZK / 50 minutes" },
+          { label: "Couples psychotherapy", price: "1,750 CZK / 75 minutes" },
+          { label: "Music therapy", price: "1,500 CZK / 50 minutes" }
+        ],
+        "Adam Schmidt": [
+          { label: "Individual psychotherapy", price: "1,700 CZK / 50 minutes" },
+          { label: "Couples psychotherapy", price: "2,500 CZK / 50 minutes" }
+        ],
+        "Barbora Kárníková": [
+          { label: "Individual psychotherapy", price: "1,000 CZK / 50 minutes" },
+          { label: "Outdoor therapy", price: "1,000 CZK / 50 minutes" }
+        ],
+        "Jonáš Herza": [
+          { label: "Individual psychotherapy", price: "1,200 CZK / 60 minutes" }
+        ]
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const therapist = params.get('therapist');
+      if (!therapist) return;
+
+      const title = document.getElementById('booking-title');
+      const subtitle = document.getElementById('booking-subtitle');
+      const pricing = document.getElementById('therapist-pricing');
+      const therapistSelect = document.getElementById('therapist');
+
+      if (title) title.textContent = `Book a session with ${therapist}`;
+      if (subtitle) subtitle.textContent = `Please fill in your details. We will get back to you and arrange an in-person or online appointment with ${therapist}.`;
+      if (therapistSelect) {
+        const option = Array.from(therapistSelect.options).find(opt => opt.value === therapist || opt.textContent.trim() === therapist);
+        if (option) therapistSelect.value = option.value;
+      }
+      if (pricing && therapistPricing[therapist]) {
+        pricing.innerHTML = therapistPricing[therapist]
+          .map(item => `<p><strong>${item.label}:</strong> ${item.price}</p>`)
+          .join('');
+      }
     })();
   </script>
   <script>

@@ -276,6 +276,14 @@
             <p>Psychoterapeut ve výcviku. Zaměřuje se na podporu při životních změnách a krizových obdobích.</p>
             <a href="jonas-herza.html" class="btn btn-center">Další informace</a>
           </article>
+
+          <article class="card therapist">
+            <img src="images/Adam_Schmidt.jpg"
+                 alt="Profilová fotografie Adama Schmidta">
+            <h3>Adam Schmidt</h3>
+            <p>Psychoterapeut ve výcviku. Hlubinně orientovaná psychoterapie, práce s jednotlivci, páry i rodinami.</p>
+            <a href="adam-schmidt.html" class="btn btn-center">Další informace</a>
+          </article>
         </div>
       </div>
     </section>
@@ -319,7 +327,7 @@
           </div>
           <div class="card">
             <h3>Párová psychoterapie</h3>
-            <div class="price">1750 Kč / 75 min</div>
+            <div class="price">od 1750 Kč / 75 min</div>
             <ul class="features">
               <li>Vztahová diagnostika</li>
               <li>Komunikační dovednosti</li>
@@ -333,8 +341,9 @@
     <!-- CHCI SE OBJEDNAT -->
     <section id="objednat" class="section bg-surface">
       <div class="container">
-        <h2 class="section-title">Chci se objednat na terapii</h2>
-        <p class="section-sub">Vyplňte prosím údaje. Ozveme se vám a domluvíme termín osobní nebo online schůzky.</p>
+        <h2 id="booking-title" class="section-title">Chci se objednat na terapii</h2>
+        <p id="booking-subtitle" class="section-sub">Vyplňte prosím údaje. Ozveme se vám a domluvíme termín osobní nebo online schůzky.</p>
+        <div id="therapist-pricing" class="therapist-pricing"></div>
 
         <form action="https://formspree.io/f/mjkepbpe" method="POST">
           <!-- Honeypot proti spamu (lidi to nevidí) -->
@@ -375,6 +384,7 @@
               <option>Martin Langpaul</option>
               <option>Barbora Kárníková</option>
               <option>Jonáš Herza</option>
+              <option>Adam Schmidt</option>
             </select>
           </div>
 
@@ -473,6 +483,49 @@
           toggle.setAttribute('aria-expanded', 'false');
         }
       });
+    })();
+  </script>
+  <script>
+    (function(){
+      const therapistPricing = {
+        "Martin Langpaul": [
+          { label: "Individuální terapie", price: "1 300 Kč / 50 minut" },
+          { label: "Párová terapie", price: "1 750 Kč / 75 minut" },
+          { label: "Muzikoterapie", price: "1 500 Kč / 50 minut" }
+        ],
+        "Adam Schmidt": [
+          { label: "Individuální terapie", price: "1 700 Kč / 50 minut" },
+          { label: "Párová terapie", price: "2 500 Kč / 50 minut" }
+        ],
+        "Barbora Kárníková": [
+          { label: "Individuální terapie", price: "1 000 Kč / 50 minut" },
+          { label: "Terapie venku", price: "1 000 Kč / 50 minut" }
+        ],
+        "Jonáš Herza": [
+          { label: "Individuální terapie", price: "1 200 Kč / 60 minut" }
+        ]
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const therapist = params.get('therapist');
+      if (!therapist) return;
+
+      const title = document.getElementById('booking-title');
+      const subtitle = document.getElementById('booking-subtitle');
+      const pricing = document.getElementById('therapist-pricing');
+      const therapistSelect = document.getElementById('therapist');
+
+      if (title) title.textContent = `Chci se objednat na terapii s ${therapist}`;
+      if (subtitle) subtitle.textContent = `Vyplňte prosím údaje. Ozveme se vám a domluvíme termín osobní nebo online schůzky s ${therapist}.`;
+      if (therapistSelect) {
+        const option = Array.from(therapistSelect.options).find(opt => opt.value === therapist || opt.textContent.trim() === therapist);
+        if (option) therapistSelect.value = option.value;
+      }
+      if (pricing && therapistPricing[therapist]) {
+        pricing.innerHTML = therapistPricing[therapist]
+          .map(item => `<p><strong>${item.label}:</strong> ${item.price}</p>`)
+          .join('');
+      }
     })();
   </script>
   <script>
